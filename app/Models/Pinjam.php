@@ -9,5 +9,5 @@ class Pinjam extends Model
 {
     use HasFactory;
     protected $table = 'pinjam';
-    public $timestamps = false;
+    
 }

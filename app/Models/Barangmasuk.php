@@ -9,5 +9,4 @@ class Barangmasuk extends Model
 {
     use HasFactory;
     protected $table = 'barangmasuk';
-    public $timestamps = false;
 }
