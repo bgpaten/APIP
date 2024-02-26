@@ -55,11 +55,12 @@
                     </div>
                     <div class="card-title text-uppercase text-center py-3">Sign In</div>
                     <form method="POST" action="{{ route('login') }}">
+                        @csrf
                         <div class="form-group">
                             <label for="exampleInputUsername" class="sr-only">Email</label>
                             <div class="position-relative has-icon-right">
                                 <input type="email" id="email" class="form-control input-shadow" name="email"
-                                    :value="old('email')" required autofocus autocomplete="username"
+                                    :value="old('email')" required autofocus autocomplete="email"
                                     placeholder="Enter Email">
                                 <div class="form-control-position">
                                     <i class="icon-user"></i>
@@ -81,15 +82,17 @@
                         <div class="form-row">
                             <div class="form-group col-6">
                                 <div class="icheck-material-white">
-                                    <input type="checkbox" id="user-checkbox" checked="" />
+                                    <input type="checkbox" id="remember_me" name="remember" checked="" />
                                     <label for="user-checkbox">Remember me</label>
                                 </div>
                             </div>
                             <div class="form-group col-6 text-right">
-                                <a href="reset-password.html">Reset Password</a>
+                                @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}">Reset Password</a>
+                                @endif
                             </div>
                         </div>
-                        <button type="button" class="btn btn-light btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-light btn-block">Sign In</button>
                         <div class="text-center mt-3">Sign In With</div>
 
                         <div class="form-row mt-4">
@@ -107,7 +110,8 @@
                 </div>
             </div>
             <div class="card-footer text-center py-3">
-                <p class="text-warning mb-0">Do not have an account? <a href="register.html"> Sign Up here</a></p>
+                <p class="text-warning mb-0">Do not have an account? <a href="{{ route('register') }}"> Sign Up here</a>
+                </p>
             </div>
         </div>
 
