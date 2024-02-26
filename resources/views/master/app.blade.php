@@ -1,20 +1,3 @@
-{{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout> --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,9 +44,9 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Jl. Mandor Basar No.54, Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16434</small>
+                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+62812 9554 2914</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>petik@gmail.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -84,16 +67,16 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
-                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>APIP</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    <a href="#" class="nav-item nav-link active">Home</a>
+                    <a href="#about" class="nav-item nav-link">About</a>
+                    <a href="#service" class="nav-item nav-link">Services</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
                         <div class="dropdown-menu m-0">
@@ -111,10 +94,11 @@
                             <a href="quote.html" class="dropdown-item">Free Quote</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="#contact" class="nav-item nav-link">Contact</a>
                 </div>
-                <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
+                <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+                <a href="#" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+                <a href="#" class="btn btn-primary py-2 px-4 ms-3">Register</a>
             </div>
         </nav>
 
@@ -221,7 +205,7 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid py-5 wow fadeInUp" id="about" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-7">
@@ -751,7 +735,7 @@
                 <div class="col-lg-4 col-md-6 footer-about">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                         <a href="index.html" class="navbar-brand">
-                            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+                            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>APIP</h1>
                         </a>
                         <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
                         <form action="">
@@ -770,15 +754,15 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
-                                <p class="mb-0">123 Street, New York, USA</p>
+                                <p class="mb-0">Jl. Mandor Basar No.54, Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16434</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
-                                <p class="mb-0">info@example.com</p>
+                                <p class="mb-0">petik@gmail.com</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-primary me-2"></i>
-                                <p class="mb-0">+012 345 67890</p>
+                                <p class="mb-0">+62812 9554 2914</p>
                             </div>
                             <div class="d-flex mt-4">
                                 <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
@@ -823,11 +807,8 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved. 
-						
-						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-						Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
-                        <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">APIP</a>. All Rights Reserved. 
+						Designed by <a class="text-white border-bottom" href="#">BarudaxWeb</a></p>
                     </div>
                 </div>
             </div>

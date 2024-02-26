@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+ atan
     return view('master.tamplate');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
