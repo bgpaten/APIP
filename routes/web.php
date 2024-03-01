@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PinjamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/barang/show/{id}', [BarangController::class, 'show'])->name('barang.show');
     Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
     Route::put('/barang/update/{id}', [BarangController::class, 'update'])->name('barang.update');
+    
+    Route::get('/pinjam', [PinjamController::class, 'history'])->name('pinjam');
+    Route::get('/pinjam/create', [PinjamController::class, 'create'])->name('pinjam.create');
 });
 
 require __DIR__.'/auth.php';
