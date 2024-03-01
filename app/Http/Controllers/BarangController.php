@@ -45,8 +45,8 @@ class BarangController extends Controller
             // max:ukuran file dalam kb
             'gambar' => 'required|mimes:jpg,png,jpeg|max:250',
             'kode' => 'required|unique:barang,kode',
-            'nama' => 'required|max:25 ',
-            'jumlah' => 'required',
+            'nama_barang' => 'required|max:25 ',
+            'jumlah_barang' => 'required',
             'lokasi' => 'required',
             'kondisi' => 'required',
             'kategori' => 'required',
@@ -61,7 +61,7 @@ class BarangController extends Controller
         ];
         $this->validate($request, $rules, $messages);
         // dd($request->all());
-        $gambar = $request->sampul;
+        $gambar = $request->gambar;
         // $namaFile = $gambar->getClientOriginalName();
         // rename nama gambar
         // getClientOriginalExtension = untuk mendapatkan ekstensi file
@@ -70,19 +70,19 @@ class BarangController extends Controller
         // echo $namaFile;
         $this->barang->image = $namaFile;
         $this->barang->kode = $request->kode;
-        $this->barang->nama = $request->nama;
-        $this->barang->jumlah = $request->jumlah;
+        $this->barang->nama = $request->nama_barang;
+        $this->barang->jumlah = $request->jumlah_barang;
         $this->barang->kategori_id = $request->kategori;
         $this->barang->lokasi_id = $request->lokasi;
         $this->barang->kondisi_id = $request->kondisi;
         $this->barang->supplier_id = $request->supplier;
+        $this->barang->spesifikasi = $request->spesifikasi;
 
         // pindahin  file ke folder upload yang ada di dalam public
         $gambar->move(public_path() . '/img', $namaFile);
-        // $gambar->move('upload', $namaFile);
         $this->barang->save();
         Alert::success('Successpull', 'Data Berhasil di Tambahkan');
-        return redirect()->route('barang.index');
+        return redirect()->route('barang');
        
     }
 
@@ -99,17 +99,78 @@ class BarangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Barang $barang)
+    public function edit($barang)
     {
         //
+        $ktg = Kategori::all();
+        $lokasi = Lokasi::all();
+        $kondisi = Kondisi::all();
+        $suplier = Supplier::all();
+        $data = Barang::findOrFail($barang);
+        return view('barang.edit',compact('ktg','lokasi','kondisi','suplier','data' ));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request,$barang)
     {
         //
+        $update = Barang::find($barang);
+
+        $rules = [
+            // max:ukuran file dalam kb
+            'gambar' => 'mimes:jpg,png,jpeg|max:250',
+            'kode' => 'required',
+            'nama_barang' => 'required|max:25 ',
+            'jumlah_barang' => 'required',
+            'lokasi' => 'required',
+            'kondisi' => 'required',
+            'kategori' => 'required',
+            'supplier' => 'required',
+
+        ];
+        $messages = [
+            'required' => ':attribute gak boleh kosong cuy',
+            'mimes' => 'extensi file tidak didukung, silahkan gunakan (.jpg/.png/.jpeg)',
+            'unique' => ':attribute sudah ada, silahkan gunakan yang lain',
+            'max' => ':attribute ukuran/jumlah tidak sesuai',
+        ];
+        $this->validate($request, $rules, $messages);
+
+        if (!$request->gambar) {
+            $update->kode = $request->kode;
+            $update->nama = $request->nama_barang;
+            $update->jumlah = $request->jumlah_barang;
+            $update->kategori_id = $request->kategori;
+            $update->lokasi_id = $request->lokasi;
+            $update->kondisi_id = $request->kondisi;
+            $update->supplier_id = $request->supplier;
+            $update->spesifikasi = $request->spesifikasi;
+            $update->save();
+            Alert::success('Successpull', 'Data Berhasil di Update');
+            return redirect()->route('barang');
+        } 
+        
+        // gimana kalau nama gambarnya sama sedangkan wujud gambarnya berbeda ?
+        // replace gembar
+        $gambar = $request->gambar;
+        $namaFile = time() . rand(100, 999) . '.'. $gambar->getClientOriginalExtension();
+        $gambar->move(public_path() . '/img', $namaFile);
+
+            $update->image = $namaFile;
+            $update->kode = $request->kode;
+            $update->nama = $request->nama_barang;
+            $update->jumlah = $request->jumlah_barang;
+            $update->kategori_id = $request->kategori;
+            $update->lokasi_id = $request->lokasi;
+            $update->kondisi_id = $request->kondisi;
+            $update->supplier_id = $request->supplier;
+            $update->spesifikasi = $request->spesifikasi;
+        
+        $update->save();
+        Alert::success('Successpull', 'Data Berhasil di Update');
+        return redirect()->route('barang');
     }
 
     /**

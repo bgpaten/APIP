@@ -19,6 +19,7 @@
         <tr>
           <th>#</th>
           <th>Nama Barang</th>
+          <th>Jumlah</th>
           <th>Spesifikasi</th>
           <th>Gambar</th>
           <th>Lokasi</th>
@@ -36,14 +37,16 @@
         <tr>
           <td> <strong>{{$no++}}</strong></td>
           <td>{{$item->nama}}</td>
+          <td>{{$item->jumlah}}</td>
           <td>{{$item->spesifikasi}}</td>
           <td>
               <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xl pull-up" title="" data-bs-original-title="{{$item->nama}}">
-                <img src="{{asset('admin')}}/assets/img/avatars/5.png" alt="Avatar" >
+                <img src="{{ asset('img') . '/' . $item->image }}" alt="Avatar" >
               </div>
             
           </td>
           <td>{{$item->lokasi->lokasi}}</td>
+
           <td><span class="badge bg-label-primary me-1">{{$item->kondisi->kondisi}}</span></td>
           <td>{{$item->kategori->kategori}}</td>
          <td>{{$item->supplier->nama}}</td>
@@ -53,7 +56,7 @@
                 <i class="bx bx-dots-vertical-rounded"></i>
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i>  Edit</a>
+                <a class="dropdown-item" href="{{route('barang.edit',$item->id)}}"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
                 <a class="dropdown-item" href="{{ route('barang.show', $item->id) }}"><i class="bx bx-pencil me-1"></i>Detail</a>
                 <a class="dropdown-item" href=""><i class="bx bx-trash me-1"></i> Delete</a>
               </div>
