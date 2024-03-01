@@ -11,4 +11,8 @@ class Kategori extends Model
 
     protected $table = 'kategori';
     public $timestamps = false;
+
+    public function barang() {
+        return $this->hasMany(Barang::class,'kategori_id','id');
+    }
 }

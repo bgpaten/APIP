@@ -11,4 +11,7 @@ class Lokasi extends Model
 
     protected $table = 'lokasi';
     public $timestamps = false;
+    public function barang() {
+        return $this->hasMany(Barang::class,'lokasi_id','id');
+    }
 }

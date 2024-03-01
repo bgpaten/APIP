@@ -10,4 +10,7 @@ class Kondisi extends Model
     use HasFactory;
     protected $table = 'kondisi';
     public $timestamps = false;
+    public function barang() {
+        return $this->hasMany(Barang::class,'kondisi_id','id');
+    }
 }
