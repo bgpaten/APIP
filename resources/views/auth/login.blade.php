@@ -134,11 +134,11 @@
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email" :value="old('email')" required autofocus autocomplete="username"
+                    name="usermail" :value="old('usermail')" required autofocus autocomplete="username"
                     placeholder="Enter your email or username"
                     autofocus
                   />
-                  <x-input-error :messages="$errors->get('email')" class="mt-2" style="color: red" />
+                  <x-input-error :messages="$errors->get('usermail')" class="mt-2" style="color: red" />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
