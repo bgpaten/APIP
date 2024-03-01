@@ -13,6 +13,17 @@ class PinjamController extends Controller
     public function index()
     {
         //
+        $pinjam = Pinjam::all();
+
+        return view("user.history", compact('pinjam'));
+    }
+
+    public function history()
+    {
+        //
+        $pinjam = Pinjam::all();
+
+        return view("user.history", compact('pinjam'));
     }
 
     /**
@@ -21,6 +32,7 @@ class PinjamController extends Controller
     public function create()
     {
         //
+        return view('user.create');
     }
 
     /**

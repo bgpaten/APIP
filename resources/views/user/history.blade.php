@@ -149,6 +149,25 @@
             <div class="row g-5">
                 <!-- Blog list Start -->
                 <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a href="{{ route('pinjam.create') }}" style="color: white;">
+                                <button class="btn btn-success">
+                                    <i class="fa fa-plus-circle"></i> Pinjam Barang</a>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-md-5">
+                            <form action="{{ route('pinjam') }}" method="get">
+                                <div class="input-group mt-4">
+                                    <input type="text" class="form-control" placeholder="search" name="search">
+                                    <button class="btn btn-success input-group-text text-white" type="submit">
+                                        <i class="fa fa-search"></i>  Cari
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <div class="row g-5">
                         <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
                             <div class="blog-item bg-light rounded overflow-hidden">
@@ -158,71 +177,33 @@
                                         <tr>
                                           <th>ID</th>
                                           <th>User</th>
-                                          <th>Date</th>
-                                          <th>Status</th>
-                                          <th>Reason</th>
+                                          <th>Created at</th>
+                                          <th>Kode Barang</th>
+                                          <th>Nama Barang</th>
+                                          <th>Jumlah Pinjam</th>
+                                          <th>Tanngal Kembali</th>
+                                          <th>Keterangan</th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        <tr>
-                                          <td>183</td>
-                                          <td>John Doe</td>
-                                          <td>11-7-2014</td>
-                                          <td><span class="tag tag-success">Approved</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>219</td>
-                                          <td>Alexander Pierce</td>
-                                          <td>11-7-2014</td>
-                                          <td><span class="tag tag-warning">Pending</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>657</td>
-                                          <td>Bob Doe</td>
-                                          <td>11-7-2014</td>
-                                          <td><span class="tag tag-primary">Approved</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>175</td>
-                                          <td>Mike Doe</td>
-                                          <td>11-7-2014</td>
-                                          <td><span class="tag tag-danger">Denied</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>134</td>
-                                          <td>Jim Doe</td>
-                                          <td>11-7-2014</td>
-                                          <td><span class="tag tag-success">Approved</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>494</td>
-                                          <td>Victoria Doe</td>
-                                          <td>11-7-2014</td>
-                                          <td><span class="tag tag-warning">Pending</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>832</td>
-                                          <td>Michael Doe</td>
-                                          <td>11-7-2014</td>
-                                          <td><span class="tag tag-primary">Approved</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                          <td>982</td>
-                                          <td>Rocky Doe</td>
-                                          <td>11-7-2014</td>
-                                          <td><span class="tag tag-danger">Denied</span></td>
-                                          <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
+                                        @php
+                                            $no = 0;
+                                        @endphp
+                                        @foreach ($pinjam as $data)
+                                            <tr>
+                                                <td>{{ ++$no }}</td>
+                                                <td>{{ $data->user_id }}</td>
+                                                <td>{{ $data->created_at }}</td>
+                                                <td>{{ $data->kode_barang }}</td>
+                                                <td>{{ $data->nama_barang }}</td>
+                                                <td>{{ $data->jumlah_pinjam }}</td>
+                                                <td>{{ $data->tanggal_kembali }}</td>
+                                                <td>{{ $data->keterangan }}</td>
+                                            </tr>
+                                        @endforeach
                                       </tbody>
                                     </table>
-                                  </div>
+                                </div>
                             </div>
                         </div>
                     </div>
