@@ -149,6 +149,25 @@
             <div class="row g-5">
                 <!-- Blog list Start -->
                 <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a href="{{ route('pinjam.create') }}" style="color: white;">
+                                <button class="btn btn-success">
+                                    <i class="fa fa-plus-circle"></i> Pinjam Barang</a>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-md-5">
+                            <form action="{{ route('pinjam') }}" method="get">
+                                <div class="input-group mt-4">
+                                    <input type="text" class="form-control" placeholder="search" name="search">
+                                    <button class="btn btn-success input-group-text text-white" type="submit">
+                                        <i class="fa fa-search"></i>  Cari
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <div class="row g-5">
                         <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
                             <div class="blog-item bg-light rounded overflow-hidden">
@@ -184,7 +203,7 @@
                                         @endforeach
                                       </tbody>
                                     </table>
-                                  </div>
+                                </div>
                             </div>
                         </div>
                     </div>

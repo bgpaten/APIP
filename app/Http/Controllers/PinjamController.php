@@ -32,6 +32,7 @@ class PinjamController extends Controller
     public function create()
     {
         //
+        return view('user.create');
     }
 
     /**
