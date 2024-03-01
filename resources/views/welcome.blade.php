@@ -230,8 +230,8 @@
                     <a href="#contact" class="nav-item nav-link">Contact</a>
                 </div>
                 <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-                <a href="#" class="btn btn-primary py-2 px-4 ms-3">Login</a>
-                <a href="#" class="btn btn-primary py-2 px-4 ms-3">Register</a>
+                <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+                <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
             </div>
         </nav>
 

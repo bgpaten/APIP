@@ -10,6 +10,8 @@ class BarangController extends Controller
     public function index()
     {
         //
+        $data = Barang::all();
+        return view('barang.index',compact('data'));
     }
 
     /**
@@ -34,6 +36,8 @@ class BarangController extends Controller
     public function show(Barang $barang)
     {
         //
+        $data = Barang::all();
+        return view('barang.show',compact('data'));
     }
 
     /**
