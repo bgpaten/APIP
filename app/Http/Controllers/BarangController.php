@@ -79,7 +79,7 @@ class BarangController extends Controller
 
         // pindahin  file ke folder upload yang ada di dalam public
         $gambar->move(public_path() . '/img', $namaFile);
-        // $gambar->move('upload', $namaFile);
+        $gambar->move('upload', $namaFile);
         $this->barang->save();
         Alert::success('Successpull', 'Data Berhasil di Tambahkan');
         return redirect()->route('barang.index');
