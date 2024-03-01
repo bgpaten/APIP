@@ -58,7 +58,13 @@
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{route('barang.edit',$item->id)}}"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
                 <a class="dropdown-item" href="{{ route('barang.show', $item->id) }}"><i class="bx bx-pencil me-1"></i>Detail</a>
-                <a class="dropdown-item" href=""><i class="bx bx-trash me-1"></i> Delete</a>
+                <form
+                action="{{ route('barang.destroy', $item->id) }}"
+                method="GET">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure??')"><i class="bx bx-trash me-1"></i> Delete</button>
+            </form>
               </div>
             </div>
           </td>
