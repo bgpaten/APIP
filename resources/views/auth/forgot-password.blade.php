@@ -105,7 +105,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                                <span class="app-brand-text demo text-body fw-bolder">APIP</span>
                             </a>
                         </div>
                         <!-- /Logo -->
