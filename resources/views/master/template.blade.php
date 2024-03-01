@@ -13,7 +13,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Dashboard</title>
 
     <meta name="description" content="" />
 
@@ -30,7 +30,7 @@
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{asset('admin')}}/assets/vendor/fonts/boxicons.css" />
-
+    <script src="https://kit.fontawesome.com/c2dd979a9d.js" crossorigin="anonymous"></script>
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{asset('admin')}}/assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{asset('admin')}}/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
@@ -52,6 +52,7 @@
   </head>
 
   <body>
+    @include('sweetalert::alert')
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">

@@ -2,14 +2,14 @@
 @section('navigasi')
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Barang </li>
     </ol>
 </nav>
 @endsection
 @section('button')
 <div class="mb-3 mt-3">
-  <a href="#"><button class="btn btn-primary">Tambah Data</button></a>
+  <a href="{{route('barang.create')}}"><button class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Tambah Data</button></a>
 </div>
 @endsection
 @section('konten')
@@ -34,7 +34,7 @@
         @endphp
         @foreach ($data as $item)
         <tr>
-          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong></strong>{{$no++}}</td>
+          <td> <strong>{{$no++}}</strong></td>
           <td>{{$item->nama}}</td>
           <td>{{$item->spesifikasi}}</td>
           <td>
