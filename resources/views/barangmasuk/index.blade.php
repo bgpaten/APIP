@@ -3,9 +3,14 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Barang </li>
+        <li class="breadcrumb-item active" aria-current="page">Barang Masuk</li>
     </ol>
 </nav>
+@endsection
+@section('button')
+<div class="mb-3 mt-3">
+  <a href="{{route('barangmasuk.create')}}"><button class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Tambah Data</button></a>
+</div>
 @endsection
 @section('konten')
 <div class="table-responsive text-nowrap">
@@ -13,14 +18,12 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Kode Barang</th>
           <th>Nama Barang</th>
-          <th>Jumlah</th>
-          <th>Spesifikasi</th>
-          <th>Gambar</th>
-          <th>Lokasi</th>
-          <th>Kondisi</th>
-          <th>Kategori</th>
-          <th>supplier</th>
+          <th>Jumlah Masuk</th>
+          <th>created_at</th>
+          <th>Upadated_at</th>
+          <th>Supplier</th>
           <th></th>
         </tr>
       </thead>
@@ -33,7 +36,7 @@
           <div class="modal-dialog " role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="{{'id' . $item->id}}">Data {{$item->nama}} Inventaris</h5>
+                <h5 class="modal-title" id="{{'id' . $item->id}}">Data {{$item->nama_barang}} Inventaris</h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -42,23 +45,8 @@
                 ></button>
               </div>
               <div class="modal-body">
-               <div class="float-end">
-                <img src="{{ asset('img') . '/' . $item->image }}" alt="Avatar" style="width: 10rem">
-               </div>
-               <div class="col-4">
-                <p>
-                  <ul>
-                    <li> Kode  : {{$item->kode}}</li>
-                    <li>Jumlah : {{$item->jumlah}}</li>
-                    <li>Spesifikasi : {{$item->spesifikasi}}</li>
-                    <li>Lokasi : {{$item->lokasi->lokasi}}</li>
-                    <li>Kondisi  : {{$item->kondisi->kondisi}}</li>
-                    <li>Kategori : {{$item->kategori->kategori}}</li>
-                    <li>Supplier : {{$item->supplier->nama}}</li>
-                  </ul>
-                 </p>
-                
-               </div>
+
+               
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -71,8 +59,8 @@
         </div>
         <tr>
           <td> <strong>{{$no++}}</strong></td>
-          <td>{{$item->nama}}</td>
-          <td>{{$item->jumlah}}</td>
+          <td>{{$item->kode_barang}}</td>
+          <td>{{$item->nama_barang}}</td>
           <td>{{$item->spesifikasi}}</td>
           <td>
               <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xl pull-up" title="" data-bs-original-title="{{$item->nama}}">
