@@ -19,6 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/user', function () {
+//     return "Anda USER Aplikasi";
+// })->middleware('auth')->name('user');
+
+
+// // jalur redirect kalau usernya role admin
+// Route::get('/admin', function () {
+//     return "Selamat Datang, ADMINISTRATOR";
+// })->middleware('auth')->name(('admin'));
+
+// DISESUAIKAN AJA ROLENYA MASEH
+
 Route::get('/dashboard', function () {
     return view('master.template');
 })->middleware(['auth', 'verified'])->name('dashboard');
