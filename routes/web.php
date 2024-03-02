@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BarangmasukController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PinjamController;
@@ -33,10 +35,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
     Route::post('/barang/store', [BarangController::class, 'store'])->name('barang.store');
     Route::get('/barang/destroy/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
-    Route::get('/barang/show/{id}', [BarangController::class, 'show'])->name('barang.show');
     Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
     Route::put('/barang/update/{id}', [BarangController::class, 'update'])->name('barang.update');
     
+    Route::resource('/barangmasuk', BarangmasukController::class);
+
+    Route::resource('/supplier', SupplierController::class);
+
     Route::get('/pinjam', [PinjamController::class, 'history'])->name('pinjam');
     Route::get('/pinjam/create', [PinjamController::class, 'create'])->name('pinjam.create');
     Route::get('/pinjam/store', [PinjamController::class, 'store'])->name('pinjam.store');
