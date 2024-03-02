@@ -38,7 +38,6 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('admin')}}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
     <link rel="stylesheet" href="{{asset('admin')}}/assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
@@ -326,11 +325,13 @@
 
     <!-- Main JS -->
     <script src="{{asset('admin')}}/assets/js/main.js"></script>
-
+    <script src="{{asset('admin')}}/assets/js/ui-modals.js"></script>
     <!-- Page JS -->
     <script src="{{asset('admin')}}/assets/js/dashboards-analytics.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    
   </body>
 </html>

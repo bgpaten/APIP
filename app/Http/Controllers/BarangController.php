@@ -52,10 +52,11 @@ class BarangController extends Controller
             'kondisi' => 'required',
             'kategori' => 'required',
             'supplier' => 'required',
+            'spesifikasi' => 'max:40',
 
         ];
         $messages = [
-            'required' => ':attribute gak boleh kosong cuy',
+            'required' => ':attribute gak boleh kosong ',
             'mimes' => 'extensi file tidak didukung, silahkan gunakan (.jpg/.png/.jpeg)',
             'unique' => ':attribute sudah ada, silahkan gunakan yang lain',
             'max' => ':attribute ukuran/jumlah tidak sesuai',
@@ -93,8 +94,6 @@ class BarangController extends Controller
     public function show(Barang $barang)
     {
         //
-        $data = Barang::all();
-        return view('barang.show',compact('data'));
     }
 
     /**
