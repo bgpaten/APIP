@@ -50,11 +50,16 @@
             </div>
           </div>
         </div>
-        
+
         <tr>
           <td> <strong>{{$no++}}</strong></td>
           <td>{{$item->nama}}</td>
-          <td>{{$item->alamat}}</td>
+          <td> 
+        @if (Str::length($item->alamat) > 150)
+            {{ substr($item->alamat, 0, 150) . '[...]' }}
+        @else
+            {{ $item->alamat }}
+        @endif</td>
           <td>{{$item->telp}}</td>
           <td>{{$item->kota}}</td>
           <td>
@@ -63,18 +68,11 @@
                 <i class="bx bx-dots-vertical-rounded"></i>
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{route('barang.edit',$item->id)}}"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
-                {{-- <button
-                type="button"
-                class="btn btn-primary"
-               
-              >
-              detail
-              </button> --}}
+                <a class="dropdown-item" href="{{route('supplier.edit',$item->id)}}"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
                 <button  class="dropdown-item"  data-bs-toggle="modal"
                 data-bs-target="{{'#id'.$item->id }}"><i class="bx bx-pencil me-1"></i>Detail</button>
                 <form
-                action="{{ route('barang.destroy', $item->id) }}"
+                action="{{ route('supplier.destroy', $item->id) }}"
                 method="GET">
                 @method('DELETE')
                 @csrf
