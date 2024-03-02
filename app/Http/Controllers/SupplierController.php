@@ -13,6 +13,8 @@ class SupplierController extends Controller
     public function index()
     {
         //
+        $data = Supplier::all();
+        return view('supplier.index',compact('data'));
     }
 
     /**
@@ -21,6 +23,7 @@ class SupplierController extends Controller
     public function create()
     {
         //
+        return view('supplier.create');
     }
 
     /**

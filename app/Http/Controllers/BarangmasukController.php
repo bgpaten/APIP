@@ -13,6 +13,8 @@ class BarangmasukController extends Controller
     public function index()
     {
         //
+        $data = Barangmasuk::all();
+        return view('barangmasuk.index',compact('data'));
     }
 
     /**
