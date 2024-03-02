@@ -9,6 +9,7 @@
 </head>
 <body>
     <h2>Form Peminjaman Barang</h2>
+    <a href="{{ route('pinjam') }}"><button>Kembali</button></a><br><br>
     <form action="{{ route('pinjam.store') }}" method="post">
         <input type="text" value="[id]" name="id" disabled>
         <input type="text" value="[user id]" name="user_id" disabled>
@@ -17,6 +18,7 @@
         <input type="text" placeholder="Masukkan jumlah pinjam" name="jumlah_pinjam">
         <input type="date" placeholder="Pilih tanggal kembali" name="tanggal_kembali">
         <input type="text" name="keterangan" placeholder="Masukan Keterrangan">
+        <button type="submit">Kirim</button>
     </form>
 </body>
 </html>
