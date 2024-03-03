@@ -126,7 +126,7 @@
             </div>
             @if ($data->image)
             <small class="text-danger">kosongkan jika tidak mengubah gambar</small>
-            @endif
+            @endif'supplier.update'
               @error('gambar')
                   <p class="text-danger">{{ $message }}</p>
               @enderror
@@ -147,7 +147,7 @@
           </div>
           <div class="row justify-content-end">
             <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane me-2"></i>Send</button>
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane me-2"></i>Update</button>
             </div>
           </div>
         </form>
