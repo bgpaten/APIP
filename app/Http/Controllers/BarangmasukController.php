@@ -133,8 +133,17 @@ class BarangmasukController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Barangmasuk $barangmasuk)
+    public function destroy(string $barangmasuk)
     {
         //
-    }
+
+        $data = Barangmasuk::findOrFail($barangmasuk);
+        // fungsi buat hapus data
+        
+        $data->delete();
+        Alert::success('Successpull', 'Data Berhasil di Hapus');
+        // redirect
+        return redirect()->route('barangmasuk.index');
+   }
+    
 }
