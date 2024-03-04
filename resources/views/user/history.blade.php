@@ -159,8 +159,8 @@
                     <div class="row g-5">
                         <div class="col-md-12 wow slideInUp" data-wow-delay="0.1s">
                             <div class="blog-item bg-light rounded overflow-hidden">
-                                <div class="card-body table-responsive p-0" style="height: 300px;">
-                                    <table class="table table-head-fixed table-hover text-nowrap">
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-head-fixed table-hover text-nowrap mb-0">
                                       <thead>
                                         <tr>
                                             <th>No</th>
@@ -170,7 +170,7 @@
                                             <th>Nama Barang</th>
                                             <th>Jumlah Pinjam</th>
                                             <th>Tanggal Kembali</th>
-                                            <th>Keterangan</th>
+                                            <th style="width: 10%;">Keterangan</th>
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -186,7 +186,7 @@
                                                 <td>{{ $data->nama_barang }}</td>
                                                 <td>{{ $data->jumlah_pinjam }}</td>
                                                 <td>{{ $data->tgl_kembali }}</td>
-                                                <td class="badge bg-warning">{{ $data->keterangan }}</td>
+                                                <td class="badge bg-warning mt-1">{{ $data->keterangan }}</td>
                                             </tr>
                                         @endforeach
                                       </tbody>
