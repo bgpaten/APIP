@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/pinjam', [PinjamController::class, 'history'])->name('pinjam');
     Route::get('/pinjam/create', [PinjamController::class, 'create'])->name('pinjam.create');
-    Route::get('/pinjam/store', [PinjamController::class, 'store'])->name('pinjam.store');
+    Route::post('/pinjam/store', [PinjamController::class, 'store'])->name('pinjam.store');
 });
 
 require __DIR__.'/auth.php';
