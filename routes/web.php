@@ -3,8 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangmasukController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BarangkeluarController;
 use App\Http\Controllers\PinjamController;
+use App\Models\Supplier;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,7 +56,21 @@ Route::middleware('auth', 'role:admin, user')->group(function () {
     Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
     Route::put('/barang/update/{id}', [BarangController::class, 'update'])->name('barang.update');
 
+    Route::get('/barangmasuk', [BarangmasukController::class, 'index'])->name('barangmasuk.index');
+    Route::get('/barangmasuk/create', [BarangmasukController::class, 'create'])->name('barangmasuk.create');
+    Route::post('/barangmasuk/store', [BarangmasukController::class, 'store'])->name('barangmasuk.store');
+    Route::get('/barangmasuk/destroy/{id}', [BarangmasukController::class, 'destroy'])->name('barangmasuk.destroy');
+    Route::get('/barangmasuk/show/{id}', [BarangmasukController::class, 'show'])->name('barangmasuk.show');
+    Route::get('/barangmasuk/edit/{id}', [BarangmasukController::class, 'edit'])->name('barangmasuk.edit');
+    Route::put('/barangmasuk/update/{id}', [BarangmasukController::class, 'update'])->name('barangmasuk.update');
 
+    Route::get('/supplier', [SupplierController::class, 'index'])->name('supplier.index');
+    Route::get('/supplier/create', [SupplierController::class, 'create'])->name('supplier.create');
+    Route::post('/supplier/store', [SupplierController::class, 'store'])->name('supplier.store');
+    Route::get('/supplier/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
+    Route::get('/supplier/show/{id}', [SupplierController::class, 'show'])->name('supplier.show');
+    Route::get('/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
+    Route::put('/supplier/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
    
 });
 
