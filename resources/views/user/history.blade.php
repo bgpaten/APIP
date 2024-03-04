@@ -151,14 +151,16 @@
                             </a>
                         </div>
                         <div class="col-md-5 mb-5 wow slideInUp" data-wow-delay="0.1s">
-                            <div class="input-group">
-                                <input type="text" class="form-control p-2" placeholder="search">
-                                <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                            </div>
+                            <form action="{{ route('pinjam') }}" method="get">
+                                <div class="input-group">
+                                    <input type="text" class="form-control p-2" name="search" placeholder="search">
+                                    <button class="btn btn-primary px-4" type="submit"><i class="bi bi-search"></i></button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="row g-5">
-                        <div class="col-md-12 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="col-md-12">
                             <div class="blog-item bg-light rounded overflow-hidden">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-head-fixed table-hover text-nowrap mb-0">
@@ -171,28 +173,29 @@
                                             <th>Nama Barang</th>
                                             <th>Jumlah Pinjam</th>
                                             <th>Tanggal Kembali</th>
-                                            <th style="width: 10%;">Keterangan</th>
+                                            <th>Keterangan</th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        @php
-                                            $no = 0;
-                                        @endphp
-                                        @foreach ($pinjam as $data)
+                                        @foreach ($data as $item)
                                             <tr>
                                                 <td>{{ ++$no }}</td>
-                                                <td>{{ $data->user_id }}</td>
-                                                <td>{{ $data->created_at }}</td>
-                                                <td>{{ $data->kode_barang }}</td>
-                                                <td>{{ $data->nama_barang }}</td>
-                                                <td>{{ $data->jumlah_pinjam }}</td>
-                                                <td>{{ $data->tgl_kembali }}</td>
-                                                <td class="badge bg-warning mt-1">{{ $data->keterangan }}</td>
+                                                <td>{{ $item->user_id }}</td>
+                                                <td>{{ $item->created_at }}</td>
+                                                <td>{{ $item->kode_barang }}</td>
+                                                <td>{{ $item->nama_barang }}</td>
+                                                <td>{{ $item->jumlah_pinjam }}</td>
+                                                <td>{{ $item->tgl_kembali }}</td>
+                                                <td class="badge bg-warning mt-1">{{ $item->keterangan }}</td>
                                             </tr>
                                         @endforeach
                                       </tbody>
+                                      <br>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="mt-3">
+                                <span>{{ $data->withQueryString()->links() }}</span>
                             </div>
                         </div>
                     </div>
