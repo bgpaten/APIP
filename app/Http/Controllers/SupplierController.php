@@ -40,7 +40,6 @@ class SupplierController extends Controller
     {
         //
         $rules = [
-            // max:ukuran file dalam kb
             'nama' => 'required|min:3|max:25',
             'alamat' => 'required|min:3|max:250',
             'no_telpon' => 'required|max:13|min:8',
@@ -90,7 +89,7 @@ class SupplierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, string $supplier)
     {
         //
         $update = Supplier::find($supplier);
@@ -134,8 +133,16 @@ class SupplierController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Supplier $supplier)
+    public function destroy(string $supplier)
     {
         //
+         // ambil data sesuai id
+         $data = Supplier::findOrFail($supplier);
+         // fungsi buat hapus data
+         
+         $data->delete();
+         Alert::success('Successpull', 'Data Berhasil di Hapus');
+         // redirect
+         return redirect()->route('supplier.index');
     }
 }

@@ -36,7 +36,9 @@ Route::get('/dashboard', function () {
     return view('master.template');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::middleware('auth', 'role:admin, user')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -50,6 +52,13 @@ Route::middleware('auth', 'role:admin, user')->group(function () {
     Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
     Route::put('/barang/update/{id}', [BarangController::class, 'update'])->name('barang.update');
 
+
+   
+});
+
+
+Route::middleware(['auth','role:user'])->group(function(){
+
     Route::get('/barangkeluar', [BarangkeluarController::class, 'index'])->name('barangkeluar');
     Route::get('/barangkeluar/create', [BarangkeluarController::class, 'create'])->name('barangkeluar.create');
     Route::post('/barangkeluar/store', [BarangkeluarController::class, 'store'])->name('barangkeluar.store');
@@ -57,10 +66,12 @@ Route::middleware('auth', 'role:admin, user')->group(function () {
     Route::get('/barangkeluar/show/{id}', [BarangkeluarController::class, 'show'])->name('barangkeluar.show');
     Route::get('/barangkeluar/edit/{id}', [BarangkeluarController::class, 'edit'])->name('barangkeluar.edit');
     Route::put('/barangkeluar/update/{id}', [BarangkeluarController::class, 'update'])->name('barangkeluar.update');
+
     
     Route::get('/pinjam', [PinjamController::class, 'history'])->name('pinjam');
     Route::get('/pinjam/create', [PinjamController::class, 'create'])->name('pinjam.create');
     Route::post('/pinjam/store', [PinjamController::class, 'store'])->name('pinjam.store');
 });
+
 
 require __DIR__.'/auth.php';

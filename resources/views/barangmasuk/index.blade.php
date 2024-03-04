@@ -7,11 +7,6 @@
     </ol>
 </nav>
 @endsection
-@section('button')
-<div class="mb-3 mt-3">
-  <a href="{{route('barangmasuk.create')}}"><button class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Tambah Data</button></a>
-</div>
-@endsection
 @section('konten')
 <div class="table-responsive text-nowrap">
     <table class="table table-hover">
@@ -45,7 +40,14 @@
                 ></button>
               </div>
               <div class="modal-body">
-
+                <p>
+                  <ul>
+                    <li>Kode Baranng  : {{$item->kode_barang}}</li>
+                    <li>Nama Barang: {{$item->nama_barang}}</li>
+                    <li>Jumlah Masuk : {{$item->jumlah_masuk}}</li>
+                    <li>Supplier  : {{$item->supplier->nama}}</li>
+                  </ul>
+              </p>
                
               </div>
               <div class="modal-footer">
@@ -61,23 +63,9 @@
           <td> <strong>{{$no++}}</strong></td>
           <td>{{$item->kode_barang}}</td>
           <td>{{$item->nama_barang}}</td>
-          <td>{{$item->spesifikasi}}</td>
-          <td>
-              <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xl pull-up" title="" data-bs-original-title="{{$item->nama}}">
-                <img src="{{ asset('img') . '/' . $item->image }}" alt="Avatar" >
-              </div>
-            
-          </td>
-          <td>{{$item->lokasi->lokasi}}</td>
-          @if ($item->kondisi->kondisi == 'Baru')
-          <td><span class="badge bg-label-primary me-1">{{$item->kondisi->kondisi}}</span></td>
-          @elseif($item->kondisi->kondisi == 'Bekas')
-          <td><span class="badge bg-label-danger me-1">{{$item->kondisi->kondisi}}</span></td>
-          @else
-          <td><span class="badge bg-label-warning me-1">{{$item->kondisi->kondisi}}</span></td>
-          @endif
-
-          <td>{{$item->kategori->kategori}}</td>
+          <td>{{$item->jumlah_masuk}}</td>
+          <td>{{$item->created_at->isoFormat('dddd, D MMMM Y') }}</td>
+          <td>{{$item->updated_at->isoFormat('dddd, D MMMM Y')}}</td>
           <td>{{$item->supplier->nama}}</td>
           <td>
             <div class="dropdown">

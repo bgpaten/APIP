@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barangmasuk;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BarangmasukController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+     public $barangmasuk;
+     public function __construct()
+     {
+         $this->barangmasuk = new Barangmasuk();
+     }    
     public function index()
     {
         //
@@ -23,14 +31,41 @@ class BarangmasukController extends Controller
     public function create()
     {
         //
+        $supplier= Supplier::all();
+        return view('barangmasuk.create',compact('supplier'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
         //
+        $rules = [
+            'kode' => 'required|min:2|max:25',
+            'nama_barang' => 'required|min:2|max:20',
+            'jumlah_masuk' => 'required|max:250',
+            'supplier' => 'required',
+           
+
+        ];
+        $messages = [
+            'required' => ':attribute gak boleh kosong ',
+            'unique' => ':attribute sudah ada, silahkan gunakan yang lain',
+            'max' => ' jumlah :attribute terlalu banyak',
+            'min' => 'jumlah :attribute terlalu terlalu sedikit',
+        ];
+        $this->validate($request, $rules, $messages);
+       
+        $this->barangmasuk->kode_barang = $request->kode;
+        $this->barangmasuk->nama_barang = $request->nama_barang;
+        $this->barangmasuk->jumlah_masuk = $request->jumlah_masuk;
+        $this->barangmasuk->supplier_id = $request->supplier;
+
+
+        $this->barangmasuk->save();
+        Alert::success('Successpull', 'Data Berhasil di Tambahkan');
+        return redirect()->route('barangmasuk.index');
     }
 
     /**

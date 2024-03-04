@@ -116,6 +116,7 @@
                 </svg>
               </span>
               <span class="app-brand-text fw-bolder ms-2">APIP</span>
+              
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -180,6 +181,48 @@
                 
               </ul>
             </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Barang Masuk</div>
+              </a>
+
+              <ul class="menu-sub">
+               
+                <li class="menu-item">
+                  <a href="{{route('barangmasuk.index')}}" class="menu-link">
+                    <div data-i18n="Without navbar">Data Barang Masuk</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('barangmasuk.create')}}" class="menu-link">
+                    <div data-i18n="Container">Tambah Data</div>
+                  </a>
+                </li>
+                
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Stok</div>
+              </a>
+
+              <ul class="menu-sub">
+               
+                <li class="menu-item">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Without navbar">Data Stok</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Container">Tambah Data</div>
+                  </a>
+                </li>
+                
+              </ul>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->
@@ -230,8 +273,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                            <small class="text-muted">{{ Auth::user()->role }}</small>
                           </div>
                         </div>
                       </a>

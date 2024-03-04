@@ -27,7 +27,7 @@
         @foreach ($data as $item)
         {{-- modal detail --}}
         <div class="modal fade" id="{{'id' . $item->id}}" tabindex="-1" aria-hidden="true">
-          <div class="modal-dialog " role="document">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="{{'id' . $item->id}}"></h5>
@@ -39,7 +39,14 @@
                 ></button>
               </div>
               <div class="modal-body">
-               
+                    <p>
+                        <ul>
+                          <li>Nama Supplier  : {{$item->nama}}</li>
+                          <li>No Telpon : {{$item->telp}}</li>
+                          <li>Kota : {{$item->kota}}</li>
+                          <li>Alamat  : {{$item->alamat}}</li>
+                        </ul>
+                    </p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -71,13 +78,10 @@
                 <a class="dropdown-item" href="{{route('supplier.edit',$item->id)}}"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
                 <button  class="dropdown-item"  data-bs-toggle="modal"
                 data-bs-target="{{'#id'.$item->id }}"><i class="bx bx-pencil me-1"></i>Detail</button>
-                <form
-                action="{{ route('supplier.destroy', $item->id) }}"
-                method="GET">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure??')"><i class="bx bx-trash me-1"></i> Delete</button>
-            </form>
+                <a onclick="return confirm('Anda Yakin Ingin Hapus Data??')"
+                {{--  href="{{ url("kategori/destroy/{$kategori['id']}") }}"  --}}
+                href="{{ route('supplier.destroy',$item->id) }}" class="dropdown-item"><i
+                    class="bx bx-trash"></i> Hapus</a>
               </div>
             </div>
           </td>
