@@ -155,6 +155,12 @@
               </ul>
             </li>
             <li class="menu-item">
+              <a href="{{ route('barangkeluar') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Barang Keluar</div>
+              </a>
+            </li>
+            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Supplier</div>
@@ -338,16 +344,6 @@
 
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
-    <!-- / Layout wrapper -->
-
-    <div class="buy-now">
-      <a
-        href="#"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
     </div>
 
     <!-- Core JS -->

@@ -69,6 +69,7 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
+
     'timezone' => 'Asia/Jakarta',
     // 'timezone' => 'UTC',
 
@@ -84,7 +85,6 @@ return [
     */
     'locale' => 'id',
     // 'locale' => 'en',
-
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
