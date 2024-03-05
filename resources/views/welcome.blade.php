@@ -224,11 +224,10 @@
                     @endauth
                     <a href="#contact" class="nav-item nav-link">Contact</a>
                 </div>
-                {{-- <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button> --}}
                 <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal"
                             data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
                         <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
-                @auth
+                {{-- @auth --}}
                     @if (!Auth::check())
                         <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
                     @elseif (Auth::check() && Auth::user()->role == 'user')
@@ -243,7 +242,7 @@
                     @elseif (Auth::check() && Auth::user()->role == 'admin')
                         <a href="{{ url('/dashboard') }}" class="btn btn-primary py-2 px-4 ms-3">Dashboard</a>
                     @endif
-                @endauth
+                {{-- @endauth --}}
             </div>
         </nav>
 
@@ -272,8 +271,7 @@
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital
                                 Solution</h1>
-                            <a href="#" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free
-                                Quote</a>
+                            <a href="#" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Barang</a>
                             <a href="#contact"
                                 class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
@@ -376,7 +374,7 @@
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
                             <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>24/7 Support</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Harga terjangkau</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Amanah</h5> 
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
