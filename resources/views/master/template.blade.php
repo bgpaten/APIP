@@ -130,7 +130,8 @@
             <!-- Dashboard -->
             <li class="menu-item active">
               <a href="{{url('/dashboard')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                {{-- <i class="menu-icon tf-icons bx bx-home-circle"></i> --}}
+                <i class="menu-icon tf-icons fa-solid fa-house"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
@@ -138,13 +139,15 @@
             <!-- Layouts -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons fa-solid fa-layer-group"></i>
+                
                 <div data-i18n="Layouts">Barang</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
+                  
                   <a href="{{route('barang')}}" class="menu-link">
-                    <div data-i18n="Without navbar">Data Barang</div>
+                    <div data-i18n="Without navbar"> Data Barang</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -155,14 +158,9 @@
               </ul>
             </li>
             <li class="menu-item">
-              <a href="{{ route('barangkeluar') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Barang Keluar</div>
-              </a>
-            </li>
-            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                
+                <i class="menu-icon tf-icons fa-solid fa-users"></i>
                 <div data-i18n="Layouts">Supplier</div>
               </a>
 
@@ -182,8 +180,15 @@
               </ul>
             </li>
             <li class="menu-item">
+              <a href="{{ route('barangkeluar') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa fa-sign-out"></i>
+                <div data-i18n="Basic">Barang Keluar</div>
+              </a>
+            </li>
+           
+            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons fa fa-sign-in"></i>
                 <div data-i18n="Layouts">Barang Masuk</div>
               </a>
 
@@ -203,25 +208,10 @@
               </ul>
             </li>
             <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Stok</div>
+              <a href="{{ route('stok') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa fa-archive"></i>
+                <div data-i18n="Basic">Stok</div>
               </a>
-
-              <ul class="menu-sub">
-               
-                <li class="menu-item">
-                  <a href="#" class="menu-link">
-                    <div data-i18n="Without navbar">Data Stok</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="#" class="menu-link">
-                    <div data-i18n="Container">Tambah Data</div>
-                  </a>
-                </li>
-                
-              </ul>
             </li>
           </ul>
         </aside>

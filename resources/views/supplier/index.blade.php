@@ -44,7 +44,7 @@
                           <li>Nama Supplier  : {{$item->nama}}</li>
                           <li>No Telpon : {{$item->telp}}</li>
                           <li>Kota : {{$item->kota}}</li>
-                          <li>Alamat  : {{$item->alamat}}</li>
+                          <li style="white-space: pre-wrap;">Alamat  : {{$item->alamat}}</li>
                         </ul>
                     </p>
               </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Barangmasuk;
 use App\Models\Kategori;
 use App\Models\Kondisi;
 use App\Models\Lokasi;
@@ -32,11 +33,12 @@ class BarangController extends Controller
     public function create()
     {
         //
+        $barangmasuk = Barangmasuk::all();
         $ktg = Kategori::all();
         $lokasi = Lokasi::all();
         $kondisi = Kondisi::all();
         $suplier = Supplier::all();
-        return view('barang.create',compact('ktg','lokasi','kondisi','suplier'));
+        return view('barang.create',compact('barangmasuk','ktg','lokasi','kondisi','suplier'));
      
     }
     public function store(Request $request)

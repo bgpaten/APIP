@@ -3,7 +3,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Barang Masuk</li>
+        <li class="breadcrumb-item active" aria-current="page">Stok</li>
     </ol>
 </nav>
 @endsection
@@ -16,9 +16,8 @@
           <th>Kode Barang</th>
           <th>Nama Barang</th>
           <th>Jumlah Masuk</th>
-          <th>created_at</th>
-          <th>Upadated_at</th>
-          <th>Supplier</th>
+          <th>Jumlah Keluar</th>
+          <th>Stok Barang</th>
           <th></th>
         </tr>
       </thead>
@@ -42,7 +41,7 @@
               <div class="modal-body">
                 <p>
                   <ul>
-                    <li>Kode Baranng  : {{$item->kode_barang}}</li>
+                    <li>Kode Barang  : {{$item->kode_barang}}</li>
                     <li>Nama Barang: {{$item->nama_barang}}</li>
                     <li>Jumlah Masuk : {{$item->jumlah_masuk}}</li>
                     <li>Supplier  : {{$item->supplier->nama}}</li>
@@ -64,16 +63,16 @@
           <td>{{$item->kode_barang}}</td>
           <td>{{$item->nama_barang}}</td>
           <td>{{$item->jumlah_masuk}}</td>
-          <td>{{$item->created_at->isoFormat('dddd, D MMMM Y') }}</td>
-          <td>{{$item->updated_at->isoFormat('dddd, D MMMM Y')}}</td>
-          <td>{{$item->supplier->nama}}</td>
+          {{-- <td>{{$barangkeluar->}}</td> --}}
+          <td></td>
+          <td></td>
           <td>
             <div class="dropdown">
               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                 <i class="bx bx-dots-vertical-rounded"></i>
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{route('barangmasuk.edit',$item->id)}}"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
+                <a class="dropdown-item" href="#"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
                 {{-- <button
                 type="button"
                 class="btn btn-primary"
