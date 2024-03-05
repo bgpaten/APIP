@@ -199,7 +199,7 @@
     <!-- Navbar & Carousel Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-            <a href="index.html" class="navbar-brand p-0">
+            <a href="#" class="navbar-brand p-0">
                 <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>APIP</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -210,15 +210,30 @@
                     <a href="#" class="nav-item nav-link ">Home</a>
                     <a href="#about" class="nav-item nav-link ">About</a>
                     <a href="#service" class="nav-item nav-link">Services</a>
-                    <a href="#barang" class="nav-item nav-link">Barang</a>
+                    @auth
+                        <a href="#barang" class="nav-item nav-link">Barang</a>
+                    @endauth
                     <a href="#contact" class="nav-item nav-link">Contact</a>
                 </div>
                 {{-- <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button> --}}
-                {{-- @if ((Auth::user()->role == 'admin')) --}}
-                    <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
-                {{-- @endif --}}
+              
+            @auth
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                <a href="{{ route('logout') }}" class="btn btn-primary py-2 px-4 ms-3" onclick="event.preventDefault();
+                this.closest('form').submit();" >Logout</a>
+
+                </form>
+                {{--    <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a> --}}
+                @else
+                {{-- <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a> --}}
+                <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
                 
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
+                    {{-- <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a> --}}
+                @endif
+            @endauth
             </div>
         </nav>
 
@@ -262,25 +277,6 @@
         </div>
     </div>
     <!-- Navbar & Carousel End -->
-
-
-    <!-- Full Screen Search Start -->
-    {{-- <div class="modal fade" id="searchModal" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex align-items-center justify-content-center">
-                    <div class="input-group" style="max-width: 600px;">
-                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- Full Screen Search End -->
 
 
     <!-- Facts Start -->
@@ -375,11 +371,6 @@
     <!-- About End -->
 
 
-    <!-- Features Start -->
-    
-    <!-- Features Start -->
-
-
     <!-- Service Start -->
     <div class="container-fluid py-5 wow fadeInUp" id="service" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -462,89 +453,78 @@
     <!-- Service End -->
 
 
-
     <!-- Barang star-->
-    <div class="container-fluid py-5 wow fadeInUp" id="barang" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">goods</h5>
-                <h1 class="mb-0">apip application item data</h1>
-                <p for="">Select Kategories</p>
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-outline-primary">Elektronik </button>
-                    <button type="button" class="btn btn-outline-primary">Furniture</button>
-                    <button type="button" class="btn btn-outline-primary">Sarana</button>
-                    <button type="button" class="btn btn-outline-primary">Other</button>
-                  </div>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6 wow zoomIn" >
-                    <div class="card">
-                        <img src="{{asset('user')}}/img/team-1.jpg" class="card-img-top img-fluid" alt="..." style="width: auto; height: 200px;">
-                            <div class="card-body bg-light">
-                                <h4 class="mb-3">Kursi</h4>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p>Jumlah</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="mb-3">34</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p>Spesifikasi</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="mb-3">Bagus</p>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary">Detail</a>
-                            </div>
-                      </div>
+   @auth
+        <div class="container-fluid py-5 wow fadeInUp" id="barang" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                    <h5 class="fw-bold text-primary text-uppercase">goods</h5>
+                    <h1 class="mb-0">apip application item data</h1>
+                    <p for="">Select Kategories</p>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        @foreach ($ktg as $item)
+                            <button type="button" class="btn btn-outline-primary">{{$item->kategori}}</button> 
+                        @endforeach
+                    </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow zoomIn" >
-                    <div class="card">
-                        <img src="{{asset('user')}}/img/team-1.jpg" class="card-img-top img-fluid" alt="..." style="width: auto; height: 200px;">
-                            <div class="card-body bg-light">
-                                <h4 class="mb-3">Card title</h4>
-                                <p class="mb-3">Some quick lorem example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="row g-5">
+                    @foreach ($brg as $barang)
+                    <div class="col-lg-3 col-md-6 wow zoomIn" >
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="card ">
+                                <img src="{{ asset('img')."/" .$barang->image }}" class="card-img-top img-fluid" alt="..." style="width: auto; height: 200px;">
+                                    <div class="card-body bg-light">
+                                        <h4 class="mb-3">{{$barang->nama}}</h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p>Jumlah</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-3">{{$barang->jumlah}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p>Spesifikasi</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-3">{{$barang->spesifikasi}}</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-primary">Detail</a>
+                                    </div>
                             </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow zoomIn" >
-                    <div class="card">
-                        <img src="{{asset('user')}}/img/team-1.jpg" class="card-img-top img-fluid" alt="..." style="width: auto; height: 200px;">
-                            <div class="card-body bg-light">
-                                <h4 class="mb-3">Card title</h4>
-                                <p class="mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                      </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow zoomIn" >
-                    <div class="card">
-                        <img src="{{asset('user')}}/img/team-1.jpg" class="card-img-top img-fluid" alt="..." style="width: auto; height: 200px;">
-                            <div class="card-body bg-light">
-                                <h4 class="mb-3">Card title</h4>
-                                <p class="mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                      </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
+   @endauth
     <!-- Barang end-->
 
-
-
-    <!-- Pricing Plan Start -->
-    
-    <!-- Pricing Plan End -->
-
-
+    <!----
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
+</div>
+    -->
 
     <!-- Quote Start -->
     <div class="container-fluid py-5 wow fadeInUp" id="contact"  data-wow-delay="0.1s">
@@ -608,7 +588,6 @@
     <!-- Quote End -->
 
 
-
     <!-- Team Start -->
     <div class="container-fluid py-5 wow fadeInUp" id="team" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -622,9 +601,9 @@
                         <div class="team-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{asset('user')}}/img/team-1.jpg" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://github.com/bgpaten"><i class="fab fa-github fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/ahyarpattani_/"><i class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.linkedin.com/in/ahyar-pattani-24879728a/"><i class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -638,9 +617,9 @@
                         <div class="team-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{asset('user')}}/img/team-2.jpg" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://github.com/Saeful25"><i class="fab fa-github fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/m_saeful311/"><i class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.linkedin.com/in/muhammad-saefulloh-10109228b/"><i class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -654,9 +633,9 @@
                         <div class="team-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{asset('user')}}/img/team-3.jpg" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://github.com/Qhhvy"><i class="fab fa-github fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/qahhvy_/"><i class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.linkedin.com/in/kahfi-al-ghifari-73211828b/"><i class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -687,7 +666,7 @@
                             <img class="img-fluid w-100" src="{{asset('user')}}/img/team-3.jpg" alt="">
                             <div class="team-social">
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/nr_fil/"><i class="fab fa-instagram fw-normal"></i></a>
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
@@ -701,7 +680,6 @@
         </div>
     </div>
     <!-- Team End -->
-
 
 
     <!-- Testimonial Start -->
@@ -764,12 +742,6 @@
         </div>
     </div>
     <!-- Testimonial End -->
-
-
-
-    <!-- Blog Start -->
-   
-    <!-- Blog Start -->
 
 
     <!-- Vendor Start -->

@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriController;
+use App\Models\Kategori;
 use App\Http\Controllers\BarangmasukController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BarangkeluarController;
@@ -19,11 +21,12 @@ use App\Models\Supplier;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [KategoriController::class, 'welcome']);
 
 // Route::get('/user', function () {
 //     return "Anda USER Aplikasi";
 // })->middleware('auth')->name('user');
-
+// 
 
 // // jalur redirect kalau usernya role admin
 // Route::get('/admin', function () {
@@ -33,12 +36,13 @@ use App\Models\Supplier;
 // DISESUAIKAN AJA ROLENYA MASEH
 
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+
+Route::middleware(['auth', 'role:admin, user'])->group(function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
-
+  
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
