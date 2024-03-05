@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pinjam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PinjamController extends Controller
@@ -24,12 +25,15 @@ class PinjamController extends Controller
         return view("user.history", compact('pinjam'));
     }
 
-    public function history()
+    public function history(Request $request)
     {
         //
-        $pinjam = Pinjam::all();
+        $search = $request->get("search");
+        $batas = 5;
+        $data = DB::table('pinjam')->simplePaginate($batas);
+        $no = $batas * ($data->currentPage() - 1);
 
-        return view("user.history", compact('pinjam'));
+        return view("user.history", compact('data', 'no', 'search'));
     }
 
     /**
