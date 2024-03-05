@@ -167,12 +167,12 @@
               <ul class="menu-sub">
                
                 <li class="menu-item">
-                  {{-- <a href="{{route('supplier.index')}}" class="menu-link"> --}}
+                  <a href="{{route('supplier.index')}}" class="menu-link">
                     <div data-i18n="Without navbar">Data Supplier</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  {{-- <a href="{{route('supplier.create')}}" class="menu-link"> --}}
+                  <a href="{{route('supplier.create')}}" class="menu-link">
                     <div data-i18n="Container">Tambah Data</div>
                   </a>
                 </li>

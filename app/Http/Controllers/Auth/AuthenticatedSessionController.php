@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
         // }
 
         return redirect()->intended(
-            auth()->user()->role == 'admin' ? route('admin') : route('user')
+            // auth()->user()->role == 'admin' ? route('admin') : route('user')
         );
     }
 
