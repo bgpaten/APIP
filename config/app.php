@@ -70,7 +70,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
+    // 'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -82,9 +83,8 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
-    'locale' => 'en',
-
+    'locale' => 'id',
+    // 'locale' => 'en',
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

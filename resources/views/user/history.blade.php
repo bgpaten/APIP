@@ -34,6 +34,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner"></div>
@@ -106,17 +107,9 @@
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">History Peminjaman Barang APIP</h1>
-                    <nav class="mt-3" aria-label="breadcrumb">
-                        <ol class="breadcrumb font-bold">
-                            <li class="breadcrumb-item">
-                                <a href="">
-                                    <i class="fa fa-home"></i> Home
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Peminjaman Barang</li>
-                        </ol>
-                    </nav>
+                    <h1 class="display-4 text-white animated zoomIn">Riwayat Peminjaman Barang</h1>
+                    <a href="{{ url('/') }}" class="fw-bold text-white">Home /</a>
+                    <a href="{{ route('pinjam') }}" class="text-white">History</a>
                 </div>
             </div>
         </div>
@@ -148,62 +141,61 @@
         <div class="container py-5">
             <div class="row g-5">
                 <!-- Blog list Start -->
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="row">
                         <div class="col-md-7">
                             <a href="{{ route('pinjam.create') }}" style="color: white;">
-                                <button class="btn btn-success">
+                                <button class="btn btn-primary">
                                     <i class="fa fa-plus-circle"></i> Pinjam Barang</a>
                                 </button>
                             </a>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-5 mb-5 wow slideInUp" data-wow-delay="0.1s">
                             <form action="{{ route('pinjam') }}" method="get">
-                                <div class="input-group mt-4">
-                                    <input type="text" class="form-control" placeholder="search" name="search">
-                                    <button class="btn btn-success input-group-text text-white" type="submit">
-                                        <i class="fa fa-search"></i>  Cari
-                                    </button>
+                                <div class="input-group">
+                                    <input type="text" class="form-control p-2" name="search" placeholder="search">
+                                    <button class="btn btn-primary px-4" type="submit"><i class="bi bi-search"></i></button>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="row g-5">
-                        <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="col-md-12">
                             <div class="blog-item bg-light rounded overflow-hidden">
-                                <div class="card-body table-responsive p-0" style="height: 300px;">
-                                    <table class="table table-head-fixed table-hover text-nowrap">
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-head-fixed table-hover text-nowrap mb-0">
                                       <thead>
                                         <tr>
-                                          <th>ID</th>
-                                          <th>User</th>
-                                          <th>Created at</th>
-                                          <th>Kode Barang</th>
-                                          <th>Nama Barang</th>
-                                          <th>Jumlah Pinjam</th>
-                                          <th>Tanngal Kembali</th>
-                                          <th>Keterangan</th>
+                                            <th>No</th>
+                                            <th>User ID</th>
+                                            <th>Created at</th>
+                                            <th>Kode Barang</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jumlah Pinjam</th>
+                                            <th>Tanggal Kembali</th>
+                                            <th>Keterangan</th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        @php
-                                            $no = 0;
-                                        @endphp
-                                        @foreach ($pinjam as $data)
+                                        @foreach ($data as $item)
                                             <tr>
                                                 <td>{{ ++$no }}</td>
-                                                <td>{{ $data->user_id }}</td>
-                                                <td>{{ $data->created_at }}</td>
-                                                <td>{{ $data->kode_barang }}</td>
-                                                <td>{{ $data->nama_barang }}</td>
-                                                <td>{{ $data->jumlah_pinjam }}</td>
-                                                <td>{{ $data->tanggal_kembali }}</td>
-                                                <td>{{ $data->keterangan }}</td>
+                                                <td>{{ $item->user_id }}</td>
+                                                <td>{{ $item->created_at }}</td>
+                                                <td>{{ $item->kode_barang }}</td>
+                                                <td>{{ $item->nama_barang }}</td>
+                                                <td>{{ $item->jumlah_pinjam }}</td>
+                                                <td>{{ $item->tgl_kembali }}</td>
+                                                <td class="badge bg-warning mt-1">{{ $item->keterangan }}</td>
                                             </tr>
                                         @endforeach
                                       </tbody>
+                                      <br>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="mt-3">
+                                <span>{{ $data->withQueryString()->links() }}</span>
                             </div>
                         </div>
                     </div>
@@ -211,14 +203,9 @@
                 <!-- Blog list End -->
     
                 <!-- Sidebar Start -->
-                <div class="col-lg-4">
+                {{-- <div class="col-lg-3">
                     <!-- Search Form Start -->
-                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
-                        <div class="input-group">
-                            <input type="text" class="form-control p-3" placeholder="Keyword">
-                            <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                        </div>
-                    </div>
+                    
                     <!-- Search Form End -->
     
                     <!-- Category Start -->
@@ -313,7 +300,7 @@
                         </div>
                     </div>
                     <!-- Plain Text End -->
-                </div>
+                </div> --}}
                 <!-- Sidebar End -->
             </div>
         </div>
@@ -343,15 +330,17 @@
     
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid bg-dark text-light wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-4 col-md-6 footer-about">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                         <a href="index.html" class="navbar-brand">
-                            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+                            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>APIP</h1>
                         </a>
-                        <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
+                        <p class="mt-3 mb-4">APIP adalah rangkaian aplikasi bisnis open source yang mencakup semua 
+                            kebutuhan perusahaan Anda
+                            dan seterusnya. <br> Mudah digunakan dan terintegrasi penuh pada saat yang sama adalah value proposition unik APIP.</p>
                         <form action="">
                             <div class="input-group">
                                 <input type="text" class="form-control border-white p-3" placeholder="Your Email">
@@ -368,15 +357,15 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
-                                <p class="mb-0">123 Street, New York, USA</p>
+                                <p class="mb-0">Jl. Mandor Basar No.54, Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16434</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
-                                <p class="mb-0">info@example.com</p>
+                                <p class="mb-0">petik@gmail.com</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-primary me-2"></i>
-                                <p class="mb-0">+012 345 67890</p>
+                                <p class="mb-0">+62812 9554 2914</p>
                             </div>
                             <div class="d-flex mt-4">
                                 <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
@@ -391,11 +380,12 @@
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
                                 <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                                <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                <a class="text-light mb-2" href="#about"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                <a class="text-light mb-2" href="#service"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                                <a class="text-light mb-2" href="#barang"><i class="bi bi-arrow-right text-primary me-2"></i>Barang</a>
+                                <a class="text-light mb-2" href="#contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                <a class="text-light mb-2" href="#team"><i class="bi bi-arrow-right text-primary me-2"></i>Team</a>
+                                <a class="text-light " href="#testi"><i class="bi bi-arrow-right text-primary me-2"></i>Testimonial</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -403,12 +393,8 @@
                                 <h3 class="text-light mb-0">Popular Links</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                                <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                <a class="text-light mb-2" href="https://github.com/bgpaten/APIP" target="blank"><i class="bi bi-arrow-right text-primary me-2"></i>Github</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -421,10 +407,8 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved. 
-						
-						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-						Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">APIP</a>. All Rights Reserved. 
+						Designed by <a class="text-white border-bottom" href="#">BarudaxWeb</a></p>
                     </div>
                 </div>
             </div>

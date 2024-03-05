@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Barangmasuk;
 use App\Models\Kategori;
 use App\Models\Kondisi;
 use App\Models\Lokasi;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
 class BarangController extends Controller
 {
@@ -31,11 +33,12 @@ class BarangController extends Controller
     public function create()
     {
         //
+        $barangmasuk = Barangmasuk::all();
         $ktg = Kategori::all();
         $lokasi = Lokasi::all();
         $kondisi = Kondisi::all();
         $suplier = Supplier::all();
-        return view('barang.create',compact('ktg','lokasi','kondisi','suplier'));
+        return view('barang.create',compact('barangmasuk','ktg','lokasi','kondisi','suplier'));
      
     }
     public function store(Request $request)
@@ -51,10 +54,11 @@ class BarangController extends Controller
             'kondisi' => 'required',
             'kategori' => 'required',
             'supplier' => 'required',
+            'spesifikasi' => 'max:40',
 
         ];
         $messages = [
-            'required' => ':attribute gak boleh kosong cuy',
+            'required' => ':attribute gak boleh kosong ',
             'mimes' => 'extensi file tidak didukung, silahkan gunakan (.jpg/.png/.jpeg)',
             'unique' => ':attribute sudah ada, silahkan gunakan yang lain',
             'max' => ':attribute ukuran/jumlah tidak sesuai',
@@ -78,7 +82,7 @@ class BarangController extends Controller
         $this->barang->supplier_id = $request->supplier;
         $this->barang->spesifikasi = $request->spesifikasi;
 
-        // pindahin  file ke folder upload yang ada di dalam public
+        
         $gambar->move(public_path() . '/img', $namaFile);
         $this->barang->save();
         Alert::success('Successpull', 'Data Berhasil di Tambahkan');
@@ -92,8 +96,6 @@ class BarangController extends Controller
     public function show(Barang $barang)
     {
         //
-        $data = Barang::all();
-        return view('barang.show',compact('data'));
     }
 
     /**
@@ -176,8 +178,18 @@ class BarangController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Barang $barang)
+    public function destroy(string $barang)
     {
         //
+        $barang = Barang::findOrFail($barang);
+        $barang->delete();
+        // fungsi buat hapus file
+        $path = 'img/' . $barang->image;
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+        Alert::success('Successpull', 'Data Berhasil di Hapus');
+        // redirect
+        return redirect()->route('barang');
     }
 }

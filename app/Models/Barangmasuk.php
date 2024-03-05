@@ -9,4 +9,9 @@ class Barangmasuk extends Model
 {
     use HasFactory;
     protected $table = 'barangmasuk';
+
+    public function supplier() {
+        return $this->belongsTo(Supplier::class,'supplier_id','id');
+    }
+
 }

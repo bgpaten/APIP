@@ -38,7 +38,6 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('admin')}}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
     <link rel="stylesheet" href="{{asset('admin')}}/assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
@@ -117,6 +116,7 @@
                 </svg>
               </span>
               <span class="app-brand-text fw-bolder ms-2">APIP</span>
+              
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -129,8 +129,9 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item active">
-              <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <a href="{{url('/dashboard')}}" class="menu-link">
+                {{-- <i class="menu-icon tf-icons bx bx-home-circle"></i> --}}
+                <i class="menu-icon tf-icons fa-solid fa-house"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
@@ -138,33 +139,79 @@
             <!-- Layouts -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Layouts</div>
+                <i class="menu-icon tf-icons fa-solid fa-layer-group"></i>
+                
+                <div data-i18n="Layouts">Barang</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  
+                  <a href="{{route('barang')}}" class="menu-link">
+                    <div data-i18n="Without navbar"> Data Barang</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('barang.create')}}" class="menu-link">
+                    <div data-i18n="Container">Tambah Data</div>
+                  </a>
+                </li>                
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                
+                <i class="menu-icon tf-icons fa-solid fa-users"></i>
+                <div data-i18n="Layouts">Supplier</div>
               </a>
 
               <ul class="menu-sub">
                
                 <li class="menu-item">
-                  <a href="{{route('barang')}}" class="menu-link">
-                    <div data-i18n="Without navbar">Barang</div>
+                  <a href="{{route('supplier.index')}}" class="menu-link">
+                    <div data-i18n="Without navbar">Data Supplier</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-container.html" class="menu-link">
-                    <div data-i18n="Container">Container</div>
+                  <a href="{{route('supplier.create')}}" class="menu-link">
+                    <div data-i18n="Container">Tambah Data</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="layouts-fluid.html" class="menu-link">
-                    <div data-i18n="Fluid">Fluid</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-blank.html" class="menu-link">
-                    <div data-i18n="Blank">Blank</div>
-                  </a>
-                </li>
+                
               </ul>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('barangkeluar') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa fa-sign-out"></i>
+                <div data-i18n="Basic">Barang Keluar</div>
+              </a>
+            </li>
+           
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons fa fa-sign-in"></i>
+                <div data-i18n="Layouts">Barang Masuk</div>
+              </a>
+
+              <ul class="menu-sub">
+               
+                <li class="menu-item">
+                  <a href="{{route('barangmasuk.index')}}" class="menu-link">
+                    <div data-i18n="Without navbar">Data Barang Masuk</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('barangmasuk.create')}}" class="menu-link">
+                    <div data-i18n="Container">Tambah Data</div>
+                  </a>
+                </li>
+                
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="{{ route('stok') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa fa-archive"></i>
+                <div data-i18n="Basic">Stok</div>
+              </a>
             </li>
           </ul>
         </aside>
@@ -199,18 +246,6 @@
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item lh-1 me-3">
-                  <a
-                    class="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
-                    data-icon="octicon-star"
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-                    >Star</a
-                  >
-                </li>
-
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -228,8 +263,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                            <small class="text-muted">{{ Auth::user()->role }}</small>
                           </div>
                         </div>
                       </a>
@@ -300,16 +335,6 @@
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-    <!-- / Layout wrapper -->
-
-    <div class="buy-now">
-      <a
-        href="#"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -326,11 +351,13 @@
 
     <!-- Main JS -->
     <script src="{{asset('admin')}}/assets/js/main.js"></script>
-
+    <script src="{{asset('admin')}}/assets/js/ui-modals.js"></script>
     <!-- Page JS -->
     <script src="{{asset('admin')}}/assets/js/dashboards-analytics.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    
   </body>
 </html>

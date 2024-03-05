@@ -3,7 +3,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Barang </li>
+        <li class="breadcrumb-item active" aria-current="page">Stok</li>
     </ol>
 </nav>
 @endsection
@@ -13,14 +13,11 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Kode Barang</th>
           <th>Nama Barang</th>
-          <th>Jumlah</th>
-          <th>Spesifikasi</th>
-          <th>Gambar</th>
-          <th>Lokasi</th>
-          <th>Kondisi</th>
-          <th>Kategori</th>
-          <th>supplier</th>
+          <th>Jumlah Masuk</th>
+          <th>Jumlah Keluar</th>
+          <th>Stok Barang</th>
           <th></th>
         </tr>
       </thead>
@@ -33,7 +30,7 @@
           <div class="modal-dialog " role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="{{'id' . $item->id}}">Data {{$item->nama}} Inventaris</h5>
+                <h5 class="modal-title" id="{{'id' . $item->id}}">Data {{$item->nama_barang}} Inventaris</h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -42,23 +39,15 @@
                 ></button>
               </div>
               <div class="modal-body">
-               <div class="float-end">
-                <img src="{{ asset('img') . '/' . $item->image }}" alt="Avatar" style="width: 10rem">
-               </div>
-               <div class="col-4">
                 <p>
                   <ul>
-                    <li> Kode  : {{$item->kode}}</li>
-                    <li>Jumlah : {{$item->jumlah}}</li>
-                    <li>Spesifikasi : {{$item->spesifikasi}}</li>
-                    <li>Lokasi : {{$item->lokasi->lokasi}}</li>
-                    <li>Kondisi  : {{$item->kondisi->kondisi}}</li>
-                    <li>Kategori : {{$item->kategori->kategori}}</li>
-                    <li>Supplier : {{$item->supplier->nama}}</li>
+                    <li>Kode Barang  : {{$item->kode_barang}}</li>
+                    <li>Nama Barang: {{$item->nama_barang}}</li>
+                    <li>Jumlah Masuk : {{$item->jumlah_masuk}}</li>
+                    <li>Supplier  : {{$item->supplier->nama}}</li>
                   </ul>
-                 </p>
-                
-               </div>
+              </p>
+               
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -71,33 +60,19 @@
         </div>
         <tr>
           <td> <strong>{{$no++}}</strong></td>
-          <td>{{$item->nama}}</td>
-          <td>{{$item->jumlah}}</td>
-          <td>{{$item->spesifikasi}}</td>
-          <td>
-              <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xl pull-up" title="" data-bs-original-title="{{$item->nama}}">
-                <img src="{{ asset('img') . '/' . $item->image }}" alt="Avatar" >
-              </div>
-            
-          </td>
-          <td>{{$item->lokasi->lokasi}}</td>
-          @if ($item->kondisi->kondisi == 'Baru')
-          <td><span class="badge bg-label-primary me-1">{{$item->kondisi->kondisi}}</span></td>
-          @elseif($item->kondisi->kondisi == 'Bekas')
-          <td><span class="badge bg-label-danger me-1">{{$item->kondisi->kondisi}}</span></td>
-          @else
-          <td><span class="badge bg-label-warning me-1">{{$item->kondisi->kondisi}}</span></td>
-          @endif
-
-          <td>{{$item->kategori->kategori}}</td>
-          <td>{{$item->supplier->nama}}</td>
+          <td>{{$item->kode_barang}}</td>
+          <td>{{$item->nama_barang}}</td>
+          <td>{{$item->jumlah_masuk}}</td>
+          {{-- <td>{{$barangkeluar->}}</td> --}}
+          <td></td>
+          <td></td>
           <td>
             <div class="dropdown">
               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                 <i class="bx bx-dots-vertical-rounded"></i>
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{route('barang.edit',$item->id)}}"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
+                <a class="dropdown-item" href="#"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
                 {{-- <button
                 type="button"
                 class="btn btn-primary"
@@ -108,7 +83,7 @@
                 <button  class="dropdown-item"  data-bs-toggle="modal"
                 data-bs-target="{{'#id'.$item->id }}"><i class="bx bx-pencil me-1"></i>Detail</button>
                 <form
-                action="{{ route('barang.destroy', $item->id) }}"
+                action="{{ route('barangmasuk.destroy', $item->id) }}"
                 method="GET">
                 @method('DELETE')
                 @csrf

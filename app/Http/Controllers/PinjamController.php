@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Pinjam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PinjamController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public $pinjam;
+    public function __construct()
+    {
+        $this->pinjam = new Pinjam;
+    }
     public function index()
     {
         //
@@ -18,12 +25,15 @@ class PinjamController extends Controller
         return view("user.history", compact('pinjam'));
     }
 
-    public function history()
+    public function history(Request $request)
     {
         //
-        $pinjam = Pinjam::all();
+        $search = $request->get("search");
+        $batas = 5;
+        $data = DB::table('pinjam')->simplePaginate($batas);
+        $no = $batas * ($data->currentPage() - 1);
 
-        return view("user.history", compact('pinjam'));
+        return view("user.history", compact('data', 'no', 'search'));
     }
 
     /**
@@ -41,6 +51,40 @@ class PinjamController extends Controller
     public function store(Request $request)
     {
         //
+        $rules = [
+            // 'sampul' => 'required|mimes:jpg,png|max:200', // unique: nama_tabel, nama_field
+            'user_id' => 'required',
+            'kode_barang' => 'required',
+            'nama_barang' => 'required',
+            'jumlah_pinjam' => 'required',
+            'tgl_kembali' => 'required'
+        ];
+
+        // pesan error
+        $messages = [
+            'required' => ':attribute tidak boleh kosong',
+            'max' => ':attribute ukuran/jumlah tidak sesuai',
+            'mimes' => ':attribute file tidak didukung, silakan gunakan (.jpg/.png)'
+        ];
+
+        $this->validate($request, $rules, $messages);
+        
+        // $gambar = $request->sampul;
+        // $namaFile = time() . rand(100,999) . "." . $gambar->getClientOriginalExtension();
+
+        // $this->buku->sampul = $namaFile;
+        $this->pinjam->user_id = $request->user_id;
+        $this->pinjam->kode_barang = $request->kode_barang;
+        $this->pinjam->nama_barang = $request->nama_barang;
+        $this->pinjam->jumlah_pinjam = $request->jumlah_pinjam;
+        $this->pinjam->tgl_kembali = $request->tgl_kembali;
+        $this->pinjam->keterangan = $request->keterangan;
+
+        // $gambar->move(public_path() . '/upload' . $namaFile);
+        $this->pinjam->save();
+
+        Alert::success('Successpull', 'Barang Berhasil Dipinjam');
+        return redirect()->route('pinjam');
     }
 
     /**
