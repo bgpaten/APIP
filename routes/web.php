@@ -37,11 +37,11 @@ Route::get('/', function () {
 // DISESUAIKAN AJA ROLENYA MASEH
 
 Route::get('/dashboard', function () {
-    return view('master.template');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth', 'role:admin, user')->group(function () {
+Route::middleware('auth', 'role:admin')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -71,6 +71,8 @@ Route::middleware('auth', 'role:admin, user')->group(function () {
     Route::get('/supplier/show/{id}', [SupplierController::class, 'show'])->name('supplier.show');
     Route::get('/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
     Route::put('/supplier/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
+
+    Route::get('/stok', [BarangmasukController::class, 'stok'])->name('stok');
    
 });
 

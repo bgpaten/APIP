@@ -3,7 +3,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data Supplier</li>
+        <li class="breadcrumb-item active" aria-current="page">Stok</li>
     </ol>
 </nav>
 @endsection
@@ -13,10 +13,11 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Nama supplier</th>
-          <th>Alamat</th>
-          <th>No Telpon</th>
-          <th>Kota</th>
+          <th>Kode Barang</th>
+          <th>Nama Barang</th>
+          <th>Jumlah Masuk</th>
+          <th>Jumlah Keluar</th>
+          <th>Stok Barang</th>
           <th></th>
         </tr>
       </thead>
@@ -25,12 +26,11 @@
             $no = 1;
         @endphp
         @foreach ($data as $item)
-        {{-- modal detail --}}
         <div class="modal fade" id="{{'id' . $item->id}}" tabindex="-1" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-dialog " role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="{{'id' . $item->id}}"></h5>
+                <h5 class="modal-title" id="{{'id' . $item->id}}">Data {{$item->nama_barang}} Inventaris</h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -39,14 +39,15 @@
                 ></button>
               </div>
               <div class="modal-body">
-                    <p>
-                        <ul>
-                          <li>Nama Supplier  : {{$item->nama}}</li>
-                          <li>No Telpon : {{$item->telp}}</li>
-                          <li>Kota : {{$item->kota}}</li>
-                          <li style="white-space: pre-wrap;">Alamat  : {{$item->alamat}}</li>
-                        </ul>
-                    </p>
+                <p>
+                  <ul>
+                    <li>Kode Barang  : {{$item->kode_barang}}</li>
+                    <li>Nama Barang: {{$item->nama_barang}}</li>
+                    <li>Jumlah Masuk : {{$item->jumlah_masuk}}</li>
+                    <li>Supplier  : {{$item->supplier->nama}}</li>
+                  </ul>
+              </p>
+               
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -57,31 +58,37 @@
             </div>
           </div>
         </div>
-
         <tr>
           <td> <strong>{{$no++}}</strong></td>
-          <td>{{$item->nama}}</td>
-          <td> 
-        @if (Str::length($item->alamat) > 150)
-            {{ substr($item->alamat, 0, 150) . '[...]' }}
-        @else
-            {{ $item->alamat }}
-        @endif</td>
-          <td>{{$item->telp}}</td>
-          <td>{{$item->kota}}</td>
+          <td>{{$item->kode_barang}}</td>
+          <td>{{$item->nama_barang}}</td>
+          <td>{{$item->jumlah_masuk}}</td>
+          {{-- <td>{{$barangkeluar->}}</td> --}}
+          <td></td>
+          <td></td>
           <td>
             <div class="dropdown">
               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                 <i class="bx bx-dots-vertical-rounded"></i>
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{route('supplier.edit',$item->id)}}"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
+                <a class="dropdown-item" href="#"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
+                {{-- <button
+                type="button"
+                class="btn btn-primary"
+               
+              >
+              detail
+              </button> --}}
                 <button  class="dropdown-item"  data-bs-toggle="modal"
                 data-bs-target="{{'#id'.$item->id }}"><i class="bx bx-pencil me-1"></i>Detail</button>
-                <a onclick="return confirm('Anda Yakin Ingin Hapus Data??')"
-                {{--  href="{{ url("kategori/destroy/{$kategori['id']}") }}"  --}}
-                href="{{ route('supplier.destroy',$item->id) }}" class="dropdown-item"><i
-                    class="bx bx-trash"></i> Hapus</a>
+                <form
+                action="{{ route('barangmasuk.destroy', $item->id) }}"
+                method="GET">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure??')"><i class="bx bx-trash me-1"></i> Delete</button>
+            </form>
               </div>
             </div>
           </td>

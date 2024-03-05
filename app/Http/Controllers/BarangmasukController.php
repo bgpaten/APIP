@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barangmasuk;
+use App\Models\Pinjam;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -23,6 +24,13 @@ class BarangmasukController extends Controller
         //
         $data = Barangmasuk::all();
         return view('barangmasuk.index',compact('data'));
+    }
+    public function stok()
+    {
+        //
+        $barangkeluar = Pinjam::all();
+        $data = Barangmasuk::all();
+        return view('stok.index',compact('data','barangkeluar'));
     }
 
     /**
