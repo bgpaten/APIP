@@ -98,24 +98,71 @@ class PinjamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pinjam $pinjam)
+    public function edit($id)
     {
         //
+        $pinjam = Pinjam::findOrFail($id);
+        return view('user.edit', compact('pinjam'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pinjam $pinjam)
+    public function update(Request $request, $id)
     {
         //
+        $update = Pinjam::findOrFail($id);
+        $update->pinjam = $request->user_id;
+        $update->pinjam = $request->kode_barang;
+        $update->pinjam = $request->nama_barang;
+        $update->pinjam = $request->jumlah_pinjam;
+        $update->pinjam = $request->tgl_kembali;
+        $update->pinjam = $request->keterangan;
+
+        // memeriksa field table ada perubahan atau tidak
+        if ($update->isDirty()) {
+            $rules = [
+                'user_id' => 'required',
+                'kode_barang' => 'required',
+                'nama_barang' => 'required',
+                'jumlah_pinjam' => 'required',
+                'tgl_kembali' => 'required',
+                'keterangan' => 'required'
+            ];
+            // pesan error
+            $messages = [
+                'required' => ':attribute tidak boleh kosong',
+                'min' => ':attribute minimal harus 3 huruf',
+                'max' => ':attribute maximal 20 huruf',
+                'unique' => ':atribute sudah ada, silakan gunakan yang lain'
+            ];
+            // eksekusi fungsi
+            $this->validate($request, $rules, $messages);
+
+            $update->pinjam = $request->user_id;
+            $update->pinjam = $request->kode_barang;
+            $update->pinjam = $request->nama_barang;
+            $update->pinjam = $request->jumlah_pinjam;
+            $update->pinjam = $request->tgl_kembali;
+            $update->pinjam = $request->keterangan;
+            $update->save();
+            Alert::success('Successpull', 'Berhasil di Update');
+            return redirect()->route('user.history');
+        } else {
+            echo "tidak ada perubahan";
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pinjam $pinjam)
+    public function destroy(string $id)
     {
         //
+        $pinjam = Pinjam::findOrFail($id); // mengambil data sesuai idnya
+        
+        $pinjam->delete(); // fungsi menghapus data
+        Alert::success('Successpull', 'Berhasil di Hapus'); // menampilakan pemberitahuan kepada pengguna
+        return redirect()->route("pinjam"); // redirect hlaman ketika fungsi berhasil di jalankan
     }
 }

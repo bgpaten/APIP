@@ -174,6 +174,7 @@
                                             <th>Jumlah Pinjam</th>
                                             <th>Tanggal Kembali</th>
                                             <th>Keterangan</th>
+                                            <th></th>
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -187,6 +188,14 @@
                                                 <td>{{ $item->jumlah_pinjam }}</td>
                                                 <td>{{ $item->tgl_kembali }}</td>
                                                 <td class="badge bg-warning mt-1">{{ $item->keterangan }}</td>
+                                                <td>
+                                                    <a href="{{ route('pinjam.edit', $item->id) }}" class="btn icon btn-warning ms-3">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </a>
+                                                    <a href="{{ route('pinjam.destroy', $item->id) }}" class="btn icon btn-danger ms-3">
+                                                        <i class="bi bi-trash"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                       </tbody>
