@@ -142,31 +142,34 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{{asset('user')}}/img/favicon.ico" rel="icon">
+    <link href="{{ asset('user') }}/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{asset('user')}}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="{{asset('user')}}/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('user') }}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ asset('user') }}/lib/animate/animate.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{asset('user')}}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('user') }}/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{asset('user')}}/css/style.css" rel="stylesheet">
+    <link href="{{ asset('user') }}/css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner"></div>
     </div>
     <!-- Spinner End -->
@@ -177,18 +180,24 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Jl. Mandor Basar No.54, Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16434</small>
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Jl. Mandor Basar No.54,
+                        Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16434</small>
                     <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+62812 9554 2914</small>
                     <small class="text-light"><i class="fa fa-envelope-open me-2"></i>petik@gmail.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-github fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-github fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
+                            class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
         </div>
@@ -216,50 +225,57 @@
                     <a href="#contact" class="nav-item nav-link">Contact</a>
                 </div>
                 {{-- <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button> --}}
-              
-            @auth
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                <a href="{{ route('logout') }}" class="btn btn-primary py-2 px-4 ms-3" onclick="event.preventDefault();
-                this.closest('form').submit();" >Logout</a>
-
-                </form>
-                {{--    <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a> --}}
-                @else
-                {{-- <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a> --}}
-                <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
-                
-                @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
-                    {{-- <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a> --}}
-                @endif
-            @endauth
+                <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal"
+                            data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+                        <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+                @auth
+                    @if (!Auth::check())
+                        <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
+                    @elseif (Auth::check() && Auth::user()->role == 'user')
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}" class="btn btn-primary py-2 px-4 ms-3"
+                                onclick="event.preventDefault();
+                this.closest('form').submit();">
+                               Log Out
+                            </a>
+                        </form>
+                    @elseif (Auth::check() && Auth::user()->role == 'admin')
+                        <a href="{{ url('/dashboard') }}" class="btn btn-primary py-2 px-4 ms-3">Dashboard</a>
+                    @endif
+                @endauth
             </div>
         </nav>
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="{{asset('user')}}/img/carousel-1.jpg" alt="Image">
+                    <img class="w-100" src="{{ asset('user') }}/img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">creative and innovative in inventory</h1>
-                            <a href="{{ route('pinjam.create') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Barang</a>
-                            <a href="{{ route('pinjam') }}" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">History</a>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">creative and innovative in
+                                inventory</h1>
+                            <a href="{{ route('pinjam.create') }}"
+                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Barang</a>
+                            <a href="{{ route('pinjam') }}"
+                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">History</a>
 
-                       
+
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="{{asset('user')}}/img/carousel-2.jpg" alt="Image">
+                    <img class="w-100" src="{{ asset('user') }}/img/carousel-2.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital Solution</h1>
-                            <a href="#" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
-                            <a href="#contact" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital
+                                Solution</h1>
+                            <a href="#" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free
+                                Quote</a>
+                            <a href="#contact"
+                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -284,8 +300,10 @@
         <div class="container py-5 pt-lg-0">
             <div class="row gx-0">
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
+                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
+                        style="height: 150px;">
+                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
+                            style="width: 60px; height: 60px;">
                             <i class="fa fa-users text-primary"></i>
                         </div>
                         <div class="ps-4">
@@ -295,8 +313,10 @@
                     </div>
                 </div>
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
+                    <div class="bg-light shadow d-flex align-items-center justify-content-center p-4"
+                        style="height: 150px;">
+                        <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2"
+                            style="width: 60px; height: 60px;">
                             <i class="fa fa-check text-white"></i>
                         </div>
                         <div class="ps-4">
@@ -306,8 +326,10 @@
                     </div>
                 </div>
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
+                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
+                        style="height: 150px;">
+                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
+                            style="width: 60px; height: 60px;">
                             <i class="fa fa-award text-primary"></i>
                         </div>
                         <div class="ps-4">
@@ -331,17 +353,25 @@
                         <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
                         <h1 class="mb-0">Best inventory app for 10 years</h1>
                     </div>
-                    <p class="mb-4">Apip adalah aplikasi inventaris petik yang dirancang untuk membantu Anda mengelola stok barang dengan mudah dan efisien. Kami memahami bahwa pengelolaan inventaris petik dapat menjadi tugas yang rumit dan memakan waktu. </p>
+                    <p class="mb-4">Apip adalah aplikasi inventaris petik yang dirancang untuk membantu Anda
+                        mengelola stok barang dengan mudah dan efisien. Kami memahami bahwa pengelolaan inventaris petik
+                        dapat menjadi tugas yang rumit dan memakan waktu. </p>
                     <div class="">
                         <ul>
-                            <li>Melacak stok barang: Apip memungkinkan Anda untuk melacak stok barang secara real-time, sehingga Anda selalu mengetahui jumlah barang yang tersedia dan yang perlu dipesan ulang.</li>
-                            <li>Mengelola mutasi barang: Apip membantu Anda mencatat mutasi barang masuk dan keluar, baik melalui penjualan, pembelian, ataupun retur.</li>
-                            <li>Mengelola gudang: Apip membantu Anda mengelola gudang dengan lebih baik, dengan menyediakan fitur untuk mengatur lokasi penyimpanan barang dan melakukan penyesuaian stok.</li>
+                            <li>Melacak stok barang: Apip memungkinkan Anda untuk melacak stok barang secara real-time,
+                                sehingga Anda selalu mengetahui jumlah barang yang tersedia dan yang perlu dipesan
+                                ulang.</li>
+                            <li>Mengelola mutasi barang: Apip membantu Anda mencatat mutasi barang masuk dan keluar,
+                                baik melalui penjualan, pembelian, ataupun retur.</li>
+                            <li>Mengelola gudang: Apip membantu Anda mengelola gudang dengan lebih baik, dengan
+                                menyediakan fitur untuk mengatur lokasi penyimpanan barang dan melakukan penyesuaian
+                                stok.</li>
                         </ul>
                     </div>
                     <div class="row g-0 mb-3">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Penghargaan internasional</h5>
+                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Penghargaan internasional
+                            </h5>
                             <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Professional Staff</h5>
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
@@ -350,7 +380,8 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                        <div class="bg-primary d-flex align-items-center justify-content-center rounded"
+                            style="width: 60px; height: 60px;">
                             <i class="fa fa-phone-alt text-white"></i>
                         </div>
                         <div class="ps-4">
@@ -358,11 +389,13 @@
                             <h4 class="text-primary mb-0">+62 838 4165 6782</h4>
                         </div>
                     </div>
-                    <a href="" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Minta Penawaran</a>
+                    <a href="" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Minta
+                        Penawaran</a>
                 </div>
                 <div class="col-lg-5" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="https://olsera.com/_nuxt/img/6.2566a1f.jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s"
+                            src="https://olsera.com/_nuxt/img/6.2566a1f.jpg" style="object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -381,7 +414,8 @@
             </div>
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="service-icon">
                             <i class="fa fa-shield-alt text-white"></i>
                         </div>
@@ -393,19 +427,22 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="service-icon">
                             <i class="fa fa-users text-white"></i>
                         </div>
                         <h4 class="mb-3">Menambahkan lebih banyak pengguna</h4>
-                        <p class="m-0">Menampung lebih banyak pengguna yang mengakses aplikasi inventaris secara bersamaan.</p>
+                        <p class="m-0">Menampung lebih banyak pengguna yang mengakses aplikasi inventaris secara
+                            bersamaan.</p>
                         <a class="btn btn-lg btn-primary rounded" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="service-icon">
                             <i class="fa fa-database text-white"></i>
                         </div>
@@ -417,7 +454,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="service-icon">
                             <i class="fab fa-android text-white"></i>
                         </div>
@@ -429,7 +467,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div
+                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="service-icon">
                             <i class="fa fa-desktop text-white"></i>
                         </div>
@@ -441,9 +480,11 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
+                    <div
+                        class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
                         <h3 class="text-white mb-3">Silahkan Hubungi</h3>
-                        <p class="text-white mb-3">untuk mendapatkan penawaran terbaik untuk kebutuhan inventaris Anda, Tim kami siap membantu</p>
+                        <p class="text-white mb-3">untuk mendapatkan penawaran terbaik untuk kebutuhan inventaris Anda,
+                            Tim kami siap membantu</p>
                         <h2 class="text-white mb-0">+62 838 4165 6782</h2>
                     </div>
                 </div>
@@ -454,7 +495,7 @@
 
 
     <!-- Barang star-->
-   @auth
+    @auth
         <div class="container-fluid py-5 wow fadeInUp" id="barang" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
@@ -463,24 +504,25 @@
                     <p for="">Select Kategories</p>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         @foreach ($ktg as $item)
-                            <button type="button" class="btn btn-outline-primary">{{$item->kategori}}</button> 
+                            <button type="button" class="btn btn-outline-primary">{{ $item->kategori }}</button>
                         @endforeach
                     </div>
                 </div>
                 <div class="row g-5">
                     @foreach ($brg as $barang)
-                    <div class="col-lg-3 col-md-6 wow zoomIn" >
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="card ">
-                                <img src="{{ asset('img')."/" .$barang->image }}" class="card-img-top img-fluid" alt="..." style="width: auto; height: 200px;">
+                        <div class="col-lg-3 col-md-6 wow zoomIn">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="card ">
+                                    <img src="{{ asset('img') . '/' . $barang->image }}" class="card-img-top img-fluid"
+                                        alt="..." style="width: auto; height: 200px;">
                                     <div class="card-body bg-light">
-                                        <h4 class="mb-3">{{$barang->nama}}</h4>
+                                        <h4 class="mb-3">{{ $barang->nama }}</h4>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <p>Jumlah</p>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="mb-3">{{$barang->jumlah}}</p>
+                                                <p class="mb-3">{{ $barang->jumlah }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -488,19 +530,19 @@
                                                 <p>Spesifikasi</p>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="mb-3">{{$barang->spesifikasi}}</p>
+                                                <p class="mb-3">{{ $barang->spesifikasi }}</p>
                                             </div>
                                         </div>
                                         <a href="#" class="btn btn-primary">Detail</a>
                                     </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
         </div>
-   @endauth
+    @endauth
     <!-- Barang end-->
 
     <!----
@@ -527,7 +569,7 @@
     -->
 
     <!-- Quote Start -->
-    <div class="container-fluid py-5 wow fadeInUp" id="contact"  data-wow-delay="0.1s">
+    <div class="container-fluid py-5 wow fadeInUp" id="contact" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-7">
@@ -537,15 +579,20 @@
                     </div>
                     <div class="row gx-3">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Balasan dalam waktu 24 jam</h5>
+                            <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Balasan dalam waktu 24 jam
+                            </h5>
                         </div>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>Dukungan telpon 24 jam</h5>
+                            <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>Dukungan telpon 24 jam
+                            </h5>
                         </div>
                     </div>
-                    <p class="mb-4">Butuh penawaran gratis untuk proyek Anda berikutnya? Hubungi kami hari ini dan dapatkan penawaran khusus yang sesuai dengan anggaran Anda. Kami berkomitmen untuk menyediakan layanan terbaik kepada pelanggan kami dengan harga terbaik.</p>
+                    <p class="mb-4">Butuh penawaran gratis untuk proyek Anda berikutnya? Hubungi kami hari ini dan
+                        dapatkan penawaran khusus yang sesuai dengan anggaran Anda. Kami berkomitmen untuk menyediakan
+                        layanan terbaik kepada pelanggan kami dengan harga terbaik.</p>
                     <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                        <div class="bg-primary d-flex align-items-center justify-content-center rounded"
+                            style="width: 60px; height: 60px;">
                             <i class="fa fa-phone-alt text-white"></i>
                         </div>
                         <div class="ps-4">
@@ -555,14 +602,17 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
+                    <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn"
+                        data-wow-delay="0.9s">
                         <form>
                             <div class="row g-3">
                                 <div class="col-xl-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Name" style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Name"
+                                        style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Email" style="height: 55px;">
+                                    <input type="email" class="form-control bg-light border-0" placeholder="Email"
+                                        style="height: 55px;">
                                 </div>
                                 <div class="col-12">
                                     <select class="form-select bg-light border-0" style="height: 55px;">
@@ -599,11 +649,16 @@
                 <div class="col-lg wow slideInUp" data-wow-delay="0.2s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{asset('user')}}/img/team-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-1.jpg" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://github.com/bgpaten"><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/ahyarpattani_/"><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.linkedin.com/in/ahyar-pattani-24879728a/"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://github.com/bgpaten"><i class="fab fa-github fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.instagram.com/ahyarpattani_/"><i
+                                        class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.linkedin.com/in/ahyar-pattani-24879728a/"><i
+                                        class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -615,11 +670,16 @@
                 <div class="col-lg wow slideInUp" data-wow-delay="0.4s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{asset('user')}}/img/team-2.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-2.jpg" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://github.com/Saeful25"><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/m_saeful311/"><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.linkedin.com/in/muhammad-saefulloh-10109228b/"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://github.com/Saeful25"><i class="fab fa-github fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.instagram.com/m_saeful311/"><i
+                                        class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.linkedin.com/in/muhammad-saefulloh-10109228b/"><i
+                                        class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -631,11 +691,16 @@
                 <div class="col-lg wow slideInUp" data-wow-delay="0.6s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{asset('user')}}/img/team-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-3.jpg" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://github.com/Qhhvy"><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/qahhvy_/"><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.linkedin.com/in/kahfi-al-ghifari-73211828b/"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://github.com/Qhhvy"><i class="fab fa-github fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.instagram.com/qahhvy_/"><i
+                                        class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.linkedin.com/in/kahfi-al-ghifari-73211828b/"><i
+                                        class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -647,11 +712,16 @@
                 <div class="col-lg wow slideInUp" data-wow-delay="0.8s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{asset('user')}}/img/team-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-3.jpg" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://github.com/okelaja/"><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/okel.id/"><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.linkedin.com/in/m-haikal-78209128b/"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://github.com/okelaja/"><i class="fab fa-github fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.instagram.com/okel.id/"><i
+                                        class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.linkedin.com/in/m-haikal-78209128b/"><i
+                                        class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -663,11 +733,15 @@
                 <div class="col-lg wow slideInUp" data-wow-delay="1s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{asset('user')}}/img/team-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-3.jpg" alt="">
                             <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/nr_fil/"><i class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                        class="fab fa-github fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                    href="https://www.instagram.com/nr_fil/"><i
+                                        class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
+                                        class="fab fa-linkedin-in fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
@@ -692,19 +766,22 @@
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="https://olsera.com/_nuxt/img/testi1.8da0ac1.png" style="width: 80px; height: 80px;" >
+                        <img class="img-fluid rounded" src="https://olsera.com/_nuxt/img/testi1.8da0ac1.png"
+                            style="width: 80px; height: 80px;">
                         <div class="ps-4">
                             <h4 class="text-primary mb-1">Ibu Michele lele</h4>
                             <small class="text-uppercase">Cafe Avallon</small>
                         </div>
                     </div>
                     <div class="pt-4 pb-5 px-5">
-                        Senang dapat bermitra dengan Aplikasi APIP karena mempermudah pekerjaan saya dalam mengoperasikan bisnis offline. 
+                        Senang dapat bermitra dengan Aplikasi APIP karena mempermudah pekerjaan saya dalam
+                        mengoperasikan bisnis offline.
                     </div>
                 </div>
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="https://olsera.com/_nuxt/img/testi2.6a2e402.png" style="width: 80px; height: 80px;" >
+                        <img class="img-fluid rounded" src="https://olsera.com/_nuxt/img/testi2.6a2e402.png"
+                            style="width: 80px; height: 80px;">
                         <div class="ps-4">
                             <h4 class="text-primary mb-1">Ibu Ratina margonda</h4>
                             <small class="text-uppercase">Fipper</small>
@@ -716,26 +793,30 @@
                 </div>
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="https://olsera.com/_nuxt/img/testi3.cadab0d.png" style="width: 80px; height: 80px;" >
+                        <img class="img-fluid rounded" src="https://olsera.com/_nuxt/img/testi3.cadab0d.png"
+                            style="width: 80px; height: 80px;">
                         <div class="ps-4">
                             <h4 class="text-primary mb-1">Ibu Tatik Sukatik</h4>
                             <small class="text-uppercase">Chef</small>
                         </div>
                     </div>
                     <div class="pt-4 pb-5 px-5">
-                        Saya sudah lama memakai APIP dan saya senang sekali. Saya sangat terbantu dengan kemudahan fiturnya 
+                        Saya sudah lama memakai APIP dan saya senang sekali. Saya sangat terbantu dengan kemudahan
+                        fiturnya
                     </div>
                 </div>
                 <div class="testimonial-item bg-light my-4">
                     <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                        <img class="img-fluid rounded" src="https://olsera.com/_nuxt/img/testi4.2cce329.png" style="width: 80px; height: 80px;" >
+                        <img class="img-fluid rounded" src="https://olsera.com/_nuxt/img/testi4.2cce329.png"
+                            style="width: 80px; height: 80px;">
                         <div class="ps-4">
                             <h4 class="text-primary mb-1">Sukijat ngejat</h4>
                             <small class="text-uppercase">Level Up</small>
                         </div>
                     </div>
                     <div class="pt-4 pb-5 px-5">
-                        Perbedaan menggunakan APIP dan sesudah pakai sangatlah beda. APIP punya banyak fitur yang mempermudah pekerjaan kita.
+                        Perbedaan menggunakan APIP dan sesudah pakai sangatlah beda. APIP punya banyak fitur yang
+                        mempermudah pekerjaan kita.
                     </div>
                 </div>
             </div>
@@ -749,34 +830,36 @@
         <div class="container py-5 mb-5">
             <div class="bg-white">
                 <div class="owl-carousel vendor-carousel">
-                    <img src="{{asset('user')}}/img/vendor-1.jpg" alt="">
-                    <img src="{{asset('user')}}/img/vendor-2.jpg" alt="">
-                    <img src="{{asset('user')}}/img/vendor-3.jpg" alt="">
-                    <img src="{{asset('user')}}/img/vendor-4.jpg" alt="">
-                    <img src="{{asset('user')}}/img/vendor-5.jpg" alt="">
-                    <img src="{{asset('user')}}/img/vendor-6.jpg" alt="">
-                    <img src="{{asset('user')}}/img/vendor-7.jpg" alt="">
-                    <img src="{{asset('user')}}/img/vendor-8.jpg" alt="">
-                    <img src="{{asset('user')}}/img/vendor-9.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-1.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-2.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-3.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-4.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-5.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-6.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-7.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-8.jpg" alt="">
+                    <img src="{{ asset('user') }}/img/vendor-9.jpg" alt="">
                 </div>
             </div>
         </div>
     </div>
     <!-- Vendor End -->
-    
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-4 col-md-6 footer-about">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+                    <div
+                        class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                         <a href="index.html" class="navbar-brand">
                             <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>APIP</h1>
                         </a>
-                        <p class="mt-3 mb-4">APIP adalah rangkaian aplikasi bisnis open source yang mencakup semua 
+                        <p class="mt-3 mb-4">APIP adalah rangkaian aplikasi bisnis open source yang mencakup semua
                             kebutuhan perusahaan Anda
-                            dan seterusnya. <br> Mudah digunakan dan terintegrasi penuh pada saat yang sama adalah value proposition unik APIP.</p>
+                            dan seterusnya. <br> Mudah digunakan dan terintegrasi penuh pada saat yang sama adalah value
+                            proposition unik APIP.</p>
                         <form action="">
                             <div class="input-group">
                                 <input type="text" class="form-control border-white p-3" placeholder="Email">
@@ -793,7 +876,8 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
-                                <p class="mb-0">Jl. Mandor Basar No.54, Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16434</p>
+                                <p class="mb-0">Jl. Mandor Basar No.54, Rangkapan Jaya, Kec. Pancoran Mas, Kota
+                                    Depok, Jawa Barat 16434</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
@@ -804,10 +888,14 @@
                                 <p class="mb-0">+62812 9554 2914</p>
                             </div>
                             <div class="d-flex mt-4">
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-github-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-twitter fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-github-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square" href="#"><i
+                                        class="fab fa-instagram fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -815,13 +903,20 @@
                                 <h3 class="text-light mb-0">Apip</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                <a class="text-light mb-2" href="#about"><i class="bi bi-arrow-right text-primary me-2"></i>Tentang kami</a>
-                                <a class="text-light mb-2" href="#service"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Blog</a>
-                                <a class="text-light mb-2" href="#contact"><i class="bi bi-arrow-right text-primary me-2"></i>Hubungi kami</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Ketentuan layanan</a>
-                                <a class="text-light " href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Kebijakan Privasi</a>
+                                <a class="text-light mb-2" href="#"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                                <a class="text-light mb-2" href="#about"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Tentang kami</a>
+                                <a class="text-light mb-2" href="#service"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                                <a class="text-light mb-2" href="#"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Blog</a>
+                                <a class="text-light mb-2" href="#contact"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Hubungi kami</a>
+                                <a class="text-light mb-2" href="#"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Ketentuan layanan</a>
+                                <a class="text-light " href="#"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Kebijakan Privasi</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -829,8 +924,9 @@
                                 <h3 class="text-light mb-0">Link kami</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="https://github.com/bgpaten/APIP" target="blank"><i class="bi bi-arrow-right text-primary me-2"></i>Github</a>
-                                
+                                <a class="text-light mb-2" href="https://github.com/bgpaten/APIP" target="blank"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Github</a>
+
                             </div>
                         </div>
                     </div>
@@ -843,8 +939,9 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">APIP</a>. All Rights Reserved. 
-						Designed by <a class="text-white border-bottom" href="#">BarudaxWeb</a></p>
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">APIP</a>. All
+                            Rights Reserved.
+                            Designed by <a class="text-white border-bottom" href="#">BarudaxWeb</a></p>
                     </div>
                 </div>
             </div>
@@ -854,20 +951,21 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('user')}}/lib/wow/wow.min.js"></script>
-    <script src="{{asset('user')}}/lib/easing/easing.min.js"></script>
-    <script src="{{asset('user')}}/lib/waypoints/waypoints.min.js"></script>
-    <script src="{{asset('user')}}/lib/counterup/counterup.min.js"></script>
-    <script src="{{asset('user')}}/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="{{ asset('user') }}/lib/wow/wow.min.js"></script>
+    <script src="{{ asset('user') }}/lib/easing/easing.min.js"></script>
+    <script src="{{ asset('user') }}/lib/waypoints/waypoints.min.js"></script>
+    <script src="{{ asset('user') }}/lib/counterup/counterup.min.js"></script>
+    <script src="{{ asset('user') }}/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="{{asset('user')}}/js/main.js"></script>
+    <script src="{{ asset('user') }}/js/main.js"></script>
 </body>
 
 </html>
