@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -11,7 +12,14 @@ class KategoriController extends Controller
     {
         //
     }
-
+    public function welcome()
+    {
+        //
+        $ktg = Kategori::all();
+        $brg = Barang::all();
+        return view('welcome',compact('ktg', 'brg'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      */

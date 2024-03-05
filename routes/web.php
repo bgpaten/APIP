@@ -3,7 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PinjamController;
+use App\Models\Kategori;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,15 +17,15 @@ use App\Http\Controllers\PinjamController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [KategoriController::class, 'welcome']);
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/user', function () {
 //     return "Anda USER Aplikasi";
 // })->middleware('auth')->name('user');
-
+// 
 
 // // jalur redirect kalau usernya role admin
 // Route::get('/admin', function () {
@@ -35,7 +38,7 @@ Route::get('/dashboard', function () {
     return view('master.template');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','role:user,admin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
