@@ -16,10 +16,13 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/{{ asset('user') }}/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/{{ asset('user') }}/css/all.min.css"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
@@ -36,7 +39,8 @@
 <body>
     @include('sweetalert::alert')
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner"></div>
     </div>
     <!-- Spinner End -->
@@ -47,18 +51,24 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York,
+                        USA</small>
                     <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
                     <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                            class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
+                            class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
         </div>
@@ -99,8 +109,10 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
+                <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal"
+                    data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
+                <a href="https://htmlcodex.com/startup-company-website-template"
+                    class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
             </div>
         </nav>
 
@@ -122,11 +134,13 @@
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
                 <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex align-items-center justify-content-center">
                     <div class="input-group" style="max-width: 600px;">
-                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <input type="text" class="form-control bg-transparent border-primary p-3"
+                            placeholder="Type search keyword">
                         <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
@@ -147,14 +161,16 @@
                             <a href="{{ route('pinjam.create') }}" style="color: white;">
                                 <button class="btn btn-primary">
                                     <i class="fa fa-plus-circle"></i> Pinjam Barang</a>
-                                </button>
+                            </button>
                             </a>
                         </div>
                         <div class="col-md-5 mb-5 wow slideInUp" data-wow-delay="0.1s">
                             <form action="{{ route('pinjam') }}" method="get">
                                 <div class="input-group">
-                                    <input type="text" class="form-control p-2" name="search" placeholder="search">
-                                    <button class="btn btn-primary px-4" type="submit"><i class="bi bi-search"></i></button>
+                                    <input type="text" class="form-control p-2" name="search"
+                                        placeholder="search">
+                                    <button class="btn btn-primary px-4" type="submit"><i
+                                            class="bi bi-search"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -177,29 +193,28 @@
                                             <th></th>
                                         </tr>
                                       </thead>
-                                      <tbody>
-                                        @foreach ($data as $item)
-                                            <tr>
-                                                <td>{{ ++$no }}</td>
-                                                <td>{{ $item->user_id }}</td>
-                                                <td>{{ $item->created_at }}</td>
-                                                <td>{{ $item->kode_barang }}</td>
-                                                <td>{{ $item->nama_barang }}</td>
-                                                <td>{{ $item->jumlah_pinjam }}</td>
-                                                <td>{{ $item->tgl_kembali }}</td>
-                                                <td class="badge bg-warning mt-1">{{ $item->keterangan }}</td>
-                                                <td>
-                                                    <a href="{{ route('pinjam.edit', $item->id) }}" class="btn icon btn-warning ms-3">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </a>
-                                                    <a href="{{ route('pinjam.destroy', $item->id) }}" class="btn icon btn-danger ms-3">
-                                                        <i class="bi bi-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                      </tbody>
-                                      <br>
+                                        <tbody>
+                                            @foreach ($data as $item)
+                                                <tr>
+                                                    <td>{{ ++$no }}</td>
+                                                    <td>{{ $item->user_id }}</td>
+                                                    <td>{{ $item->created_at }}</td>
+                                                    <td>{{ $item->kode_barang }}</td>
+                                                    <td>{{ $item->nama_barang }}</td>
+                                                    <td>{{ $item->jumlah_pinjam }}</td>
+                                                    <td>{{ $item->tgl_kembali }}</td>
+                                                    @if ($item->tgl_kembali >= $item->created_at)
+                                                        <td><span
+                                                                class="badge bg-label-success me-1">Dikembalikan</span>
+                                                        </td>
+                                                    @else
+                                                        <td><span class="badge bg-label-warning me-1">Belum
+                                                                Dikembalikan</span></td>
+                                                    @endif
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                        <br>
                                     </table>
                                 </div>
                             </div>
@@ -210,7 +225,7 @@
                     </div>
                 </div>
                 <!-- Blog list End -->
-    
+
                 <!-- Sidebar Start -->
                 {{-- <div class="col-lg-3">
                     <!-- Search Form Start -->
@@ -336,20 +351,22 @@
         </div>
     </div>
     <!-- Vendor End -->
-    
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-4 col-md-6 footer-about">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+                    <div
+                        class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                         <a href="index.html" class="navbar-brand">
                             <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>APIP</h1>
                         </a>
-                        <p class="mt-3 mb-4">APIP adalah rangkaian aplikasi bisnis open source yang mencakup semua 
+                        <p class="mt-3 mb-4">APIP adalah rangkaian aplikasi bisnis open source yang mencakup semua
                             kebutuhan perusahaan Anda
-                            dan seterusnya. <br> Mudah digunakan dan terintegrasi penuh pada saat yang sama adalah value proposition unik APIP.</p>
+                            dan seterusnya. <br> Mudah digunakan dan terintegrasi penuh pada saat yang sama adalah value
+                            proposition unik APIP.</p>
                         <form action="">
                             <div class="input-group">
                                 <input type="text" class="form-control border-white p-3" placeholder="Your Email">
@@ -366,7 +383,8 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
-                                <p class="mb-0">Jl. Mandor Basar No.54, Rangkapan Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16434</p>
+                                <p class="mb-0">Jl. Mandor Basar No.54, Rangkapan Jaya, Kec. Pancoran Mas, Kota
+                                    Depok, Jawa Barat 16434</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
@@ -377,10 +395,14 @@
                                 <p class="mb-0">+62812 9554 2914</p>
                             </div>
                             <div class="d-flex mt-4">
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-twitter fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square" href="#"><i
+                                        class="fab fa-instagram fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -388,13 +410,20 @@
                                 <h3 class="text-light mb-0">Quick Links</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                <a class="text-light mb-2" href="#about"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                                <a class="text-light mb-2" href="#service"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                                <a class="text-light mb-2" href="#barang"><i class="bi bi-arrow-right text-primary me-2"></i>Barang</a>
-                                <a class="text-light mb-2" href="#contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                                <a class="text-light mb-2" href="#team"><i class="bi bi-arrow-right text-primary me-2"></i>Team</a>
-                                <a class="text-light " href="#testi"><i class="bi bi-arrow-right text-primary me-2"></i>Testimonial</a>
+                                <a class="text-light mb-2" href="#"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                                <a class="text-light mb-2" href="#about"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                <a class="text-light mb-2" href="#service"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                                <a class="text-light mb-2" href="#barang"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Barang</a>
+                                <a class="text-light mb-2" href="#contact"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                <a class="text-light mb-2" href="#team"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Team</a>
+                                <a class="text-light " href="#testi"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Testimonial</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -402,8 +431,9 @@
                                 <h3 class="text-light mb-0">Popular Links</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="https://github.com/bgpaten/APIP" target="blank"><i class="bi bi-arrow-right text-primary me-2"></i>Github</a>
-                                
+                                <a class="text-light mb-2" href="https://github.com/bgpaten/APIP" target="blank"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>Github</a>
+
                             </div>
                         </div>
                     </div>
@@ -416,8 +446,9 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">APIP</a>. All Rights Reserved. 
-						Designed by <a class="text-white border-bottom" href="#">BarudaxWeb</a></p>
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">APIP</a>. All
+                            Rights Reserved.
+                            Designed by <a class="text-white border-bottom" href="#">BarudaxWeb</a></p>
                     </div>
                 </div>
             </div>
@@ -427,7 +458,8 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
