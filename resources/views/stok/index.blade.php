@@ -58,12 +58,13 @@
             </div>
           </div>
         </div>
+       
         <tr>
           <td> <strong>{{$no++}}</strong></td>
           <td>{{$item->kode_barang}}</td>
           <td>{{$item->nama_barang}}</td>
           <td>{{$item->jumlah_masuk}}</td>
-          {{-- <td>{{$barangkeluar->}}</td> --}}
+          {{-- <td>{{$pinjam->jumlah_pinjam}}</td> --}}
           <td></td>
           <td></td>
           <td>
@@ -93,6 +94,8 @@
             </div>
           </td>
         </tr>
+       
+
         @endforeach
 
       </tbody>
