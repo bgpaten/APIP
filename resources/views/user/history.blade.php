@@ -180,18 +180,19 @@
                             <div class="blog-item bg-light rounded overflow-hidden">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-head-fixed table-hover text-nowrap mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>User ID</th>
-                                                <th>Created at</th>
-                                                <th>Kode Barang</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Pinjam</th>
-                                                <th>Tanggal Kembali</th>
-                                                <th>Keterangan</th>
-                                            </tr>
-                                        </thead>
+                                      <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>User ID</th>
+                                            <th>Created at</th>
+                                            <th>Kode Barang</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jumlah Pinjam</th>
+                                            <th>Tanggal Kembali</th>
+                                            <th>Keterangan</th>
+                                            <th></th>
+                                        </tr>
+                                      </thead>
                                         <tbody>
                                             @foreach ($data as $item)
                                                 <tr>
