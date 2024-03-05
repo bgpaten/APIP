@@ -91,9 +91,9 @@ Route::middleware(['auth', 'role:admin, user'])->group(function () {
    
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
