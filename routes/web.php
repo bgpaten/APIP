@@ -85,6 +85,12 @@ Route::middleware(['auth', 'role:admin, user'])->group(function () {
     Route::put('/barangkeluar/update/{id}', [BarangkeluarController::class, 'update'])->name('barangkeluar.update');
 
     Route::get('/pinjambarang', [PinjemController::class, 'index'])->name('pinjem.index');
+    Route::get('/pinjambarang/create', [PinjemController::class, 'create'])->name('pinjem.create');
+    Route::post('/pinjambarang/store', [PinjemController::class, 'store'])->name('pinjem.store');
+    Route::get('/pinjambarang/destroy/{id}', [PinjemController::class, 'destroy'])->name('pinjem.destroy');
+    Route::get('/pinjambarang/show/{id}', [PinjemController::class, 'show'])->name('pinjem.show');
+    Route::get('/pinjambarang/edit/{id}', [PinjemController::class, 'edit'])->name('pinjem.edit');
+    Route::put('/pinjambarang/update/{id}', [PinjemController::class, 'update'])->name('pinjem.update');
 
 });
 

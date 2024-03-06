@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Barang;
 use App\Models\Pinjam;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -20,25 +22,43 @@ class PinjemController extends Controller
         return view("pinjambarang.index", compact('pinjam'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $user = User::all();
+        $barang = Barang::all();
+        return view('pinjambarang.create', compact( 'user','barang'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'peminjam' => 'required',
+            'jumlah' => 'required',
+            'nama' => 'required',
+            'kode' => 'required',
+            'tgl_pinjam' => 'required',
+            'tgl_kembali' => 'required'
+        ];
+
+        $messages = [
+            'required' => ':attribute tidak boleh kosong',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $this->pinjam->user_id = $request->peminjam;
+        $this->pinjam->kode_barang = $request->kode;
+        $this->pinjam->nama_barang = $request->nama;
+        $this->pinjam->jumlah_pinjam = $request->jumlah;
+        $this->pinjam->created_at = $request->tgl_pinjam;
+        $this->pinjam->tgl_kembali = $request->tgl_kembali;
+
+        $this->pinjam->save();
+
+        Alert::success('Successpull', 'Barang Berhasil Dipinjam');
+        return redirect()->route('pinjem.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
