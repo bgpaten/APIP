@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Pinjam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,8 @@ class PinjamController extends Controller
     public function create()
     {
         //
-        return view('user.create');
+        $data = Barang::all();
+        return view('user.create',compact('data'));
     }
 
     /**
