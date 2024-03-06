@@ -93,6 +93,9 @@ Route::middleware(['auth', 'role:admin, user'])->group(function () {
     Route::get('/pinjam', [PinjamController::class, 'history'])->name('pinjam');
     Route::get('/pinjam/create', [PinjamController::class, 'create'])->name('pinjam.create');
     Route::post('/pinjam/store', [PinjamController::class, 'store'])->name('pinjam.store');
+    Route::get('/pinjam/edit/{id}', [PinjamController::class, 'edit'])->name('pinjam.edit');
+    Route::get('/pinjam/update/{id}', [PinjamController::class, 'update'])->name('pinjam.update');
+    Route::get('/pinjam/destroy /{id}', [PinjamController::class, 'destroy'])->name('pinjam.destroy');
 
 });
 
