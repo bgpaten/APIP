@@ -34,7 +34,8 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
 
-    <!-- Page CSS -->
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
 
     <!-- Helpers -->
     <script src="{{ asset('admin') }}/assets/vendor/js/helpers.js"></script>
@@ -205,7 +206,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('barangmasuk.create') }}" class="menu-link">
+                                <a href="{{ route('pinjem.create') }}" class="menu-link">
                                     <div data-i18n="Container">Form Peminjaman</div>
                                 </a>
                             </li>
