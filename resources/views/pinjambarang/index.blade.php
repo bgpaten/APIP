@@ -89,7 +89,7 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('barang.edit', $item->id) }}"><i
+                                    <a class="dropdown-item" href="{{ route('pinjem.edit', $item->id) }}"><i
                                             class="bx bx-edit-alt me-1"></i> Edit</a>
                                     {{-- <button
                 type="button"
@@ -101,7 +101,7 @@
                                     <button class="dropdown-item" data-bs-toggle="modal"
                                         data-bs-target="{{ '#id' . $item->id }}"><i
                                             class="bx bx-pencil me-1"></i>Detail</button>
-                                    <form action="{{ route('barang.destroy', $item->id) }}" method="GET">
+                                    <form action="{{ route('pinjem.destroy', $item->id) }}" method="GET">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="dropdown-item"
