@@ -13,7 +13,7 @@
         <div class="card px-3 py-3">
             <form class="row g-3" method="post" action="{{ route('pinjam.store') }}" enctype="multipart/form-data">
                 @csrf
-                <h2 class="fw-bold">Formulir Peminjaman Barang</h2>
+                <h2 class="fw-bold">Edit Peminjaman Barang</h2>
                 <div class="col-6">
                     <label for="user_id" class="form-label">User Id</label>
                     <input type="number" class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id">

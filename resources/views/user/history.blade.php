@@ -205,12 +205,22 @@
                                                     <td>{{ $item->tgl_kembali }}</td>
                                                     @if ($item->tgl_kembali >= $item->created_at)
                                                         <td><span
-                                                                class="badge bg-label-success me-1">Dikembalikan</span>
+                                                                class="badge bg-success me-1">Dikembalikan</span>
                                                         </td>
                                                     @else
-                                                        <td><span class="badge bg-label-warning me-1">Belum
+                                                        <td><span class="badge bg-warning me-1">Belum
                                                                 Dikembalikan</span></td>
                                                     @endif
+                                                    <td>
+                                                        <a href="{{ route('pinjam.edit', $item->id) }}"
+                                                            class="btn icon btn-warning ms-3">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </a>
+                                                        <a href="{{ route('pinjam.destroy', $item->id) }}"
+                                                            class="btn icon btn-danger ms-3">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
