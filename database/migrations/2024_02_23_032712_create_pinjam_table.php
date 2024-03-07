@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('nama_barang');
             $table->bigInteger('jumlah_pinjam');
             $table->date('tgl_kembali');
-            $table->text('keterangan');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

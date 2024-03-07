@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Pinjam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,8 @@ class PinjamController extends Controller
     public function create()
     {
         //
-        return view('user.create');
+        $data = Barang::all();
+        return view('user.create',compact('data'));
     }
 
     /**
@@ -54,8 +56,8 @@ class PinjamController extends Controller
         $rules = [
             // 'sampul' => 'required|mimes:jpg,png|max:200', // unique: nama_tabel, nama_field
             'user_id' => 'required',
-            'kode_barang' => 'required',
-            'nama_barang' => 'required',
+            'kode' => 'required',
+            'nama' => 'required',
             'jumlah_pinjam' => 'required',
             'tgl_kembali' => 'required'
         ];
@@ -74,8 +76,8 @@ class PinjamController extends Controller
 
         // $this->buku->sampul = $namaFile;
         $this->pinjam->user_id = $request->user_id;
-        $this->pinjam->kode_barang = $request->kode_barang;
-        $this->pinjam->nama_barang = $request->nama_barang;
+        $this->pinjam->kode_barang = $request->kode;
+        $this->pinjam->nama_barang = $request->nama;
         $this->pinjam->jumlah_pinjam = $request->jumlah_pinjam;
         $this->pinjam->tgl_kembali = $request->tgl_kembali;
         $this->pinjam->keterangan = $request->keterangan;
@@ -98,24 +100,71 @@ class PinjamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pinjam $pinjam)
+    public function edit($id)
     {
         //
+        $pinjam = Pinjam::findOrFail($id);
+        return view('user.edit', compact('pinjam'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pinjam $pinjam)
+    public function update(Request $request, $id)
     {
         //
+        $update = Pinjam::findOrFail($id);
+        $update->pinjam = $request->user_id;
+        $update->pinjam = $request->kode_barang;
+        $update->pinjam = $request->nama_barang;
+        $update->pinjam = $request->jumlah_pinjam;
+        $update->pinjam = $request->tgl_kembali;
+        $update->pinjam = $request->keterangan;
+
+        // memeriksa field table ada perubahan atau tidak
+        if ($update->isDirty()) {
+            $rules = [
+                'user_id' => 'required',
+                'kode_barang' => 'required',
+                'nama_barang' => 'required',
+                'jumlah_pinjam' => 'required',
+                'tgl_kembali' => 'required',
+                'keterangan' => 'required'
+            ];
+            // pesan error
+            $messages = [
+                'required' => ':attribute tidak boleh kosong',
+                'min' => ':attribute minimal harus 3 huruf',
+                'max' => ':attribute maximal 20 huruf',
+                'unique' => ':atribute sudah ada, silakan gunakan yang lain'
+            ];
+            // eksekusi fungsi
+            $this->validate($request, $rules, $messages);
+
+            $update->pinjam = $request->user_id;
+            $update->pinjam = $request->kode_barang;
+            $update->pinjam = $request->nama_barang;
+            $update->pinjam = $request->jumlah_pinjam;
+            $update->pinjam = $request->tgl_kembali;
+            $update->pinjam = $request->keterangan;
+            $update->save();
+            Alert::success('Successpull', 'Berhasil di Update');
+            return redirect()->route('user.history');
+        } else {
+            echo "tidak ada perubahan";
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pinjam $pinjam)
+    public function destroy(string $id)
     {
         //
+        $pinjam = Pinjam::findOrFail($id); // mengambil data sesuai idnya
+        
+        $pinjam->delete(); // fungsi menghapus data
+        Alert::success('Successpull', 'Berhasil di Hapus'); // menampilakan pemberitahuan kepada pengguna
+        return redirect()->route("pinjam"); // redirect hlaman ketika fungsi berhasil di jalankan
     }
 }
