@@ -118,10 +118,12 @@
                             </div>
 
                             <div class="col-md-6">
+
                                 <input type="number" value="{{old('jumlah_pinjam')}}" class="form-control border-0 bg-light px-4 @error('jumlah_pinjam') is-invalid @enderror" placeholder="Masukkan jumlah pinjam" name="jumlah_pinjam" style="height: 55px;">
                                 @error('jumlah_pinjam')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
+
                             </div>
                             <div class="col-md-6">
                                 <input type="date" value="{{old('tanggal_kembali')}}" class="form-control border-0 bg-light px-4 @error('tanggal_kembali') is-invalid @enderror" placeholder="Pilih tanggal kembali" name="tanggal_kembali" style="height: 55px;">
@@ -136,7 +138,7 @@
                                 @enderror
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit">Pinjam Sekarang</button>
                             </div>
                         </div>
                     </form>
