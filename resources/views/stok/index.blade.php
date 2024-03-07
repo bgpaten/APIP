@@ -23,9 +23,11 @@
       </thead>
       <tbody class="table-border-bottom-0">
         @php
-            $no = 1;
+          $no = 1;
         @endphp
         @foreach ($data as $item)
+        @foreach ($barangkeluar as $pinjem)
+        @if ($pinjem->jumlah_pinjam <= $item->jumlah_masuk)
         <div class="modal fade" id="{{'id' . $item->id}}" tabindex="-1" aria-hidden="true">
           <div class="modal-dialog " role="document">
             <div class="modal-content">
@@ -43,11 +45,10 @@
                   <ul>
                     <li>Kode Barang  : {{$item->kode_barang}}</li>
                     <li>Nama Barang: {{$item->nama_barang}}</li>
-                    <li>Jumlah Masuk : {{$item->jumlah_masuk}}</li>
+                    <li>Stok Barang : {{$item->jumlah_masuk - $pinjem->jumlah_pinjam}}</li>
                     <li>Supplier  : {{$item->supplier->nama}}</li>
                   </ul>
-              </p>
-               
+                </p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -58,14 +59,13 @@
             </div>
           </div>
         </div>
-       
         <tr>
           <td> <strong>{{$no++}}</strong></td>
           <td>{{$item->kode_barang}}</td>
           <td>{{$item->nama_barang}}</td>
           <td>{{$item->jumlah_masuk}}</td>
-          {{-- <td>{{$pinjam->jumlah_pinjam}}</td> --}}
-          <td></td>
+          <td>{{$pinjem->jumlah_pinjam}}</td>
+          <td>{{$item->jumlah_masuk - $pinjem->jumlah_pinjam}}</td>
           <td></td>
           <td>
             <div class="dropdown">
@@ -73,31 +73,20 @@
                 <i class="bx bx-dots-vertical-rounded"></i>
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#"><i class="bx bx-edit-alt me-1"></i>  Edit</a>
-                {{-- <button
-                type="button"
-                class="btn btn-primary"
-               
-              >
-              detail
-              </button> --}}
-                <button  class="dropdown-item"  data-bs-toggle="modal"
-                data-bs-target="{{'#id'.$item->id }}"><i class="bx bx-pencil me-1"></i>Detail</button>
-                <form
-                action="{{ route('barangmasuk.destroy', $item->id) }}"
-                method="GET">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure??')"><i class="bx bx-trash me-1"></i> Delete</button>
-            </form>
+                <a class="dropdown-item" href="#"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="{{'#id'.$item->id }}"><i class="bx bx-pencil me-1"></i>Detail</button>
+                <form action="{{ route('barangmasuk.destroy', $item->id) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure??')"><i class="bx bx-trash me-1"></i> Delete</button>
+                </form>
               </div>
             </div>
           </td>
         </tr>
-       
-
+        @endif
         @endforeach
-
+        @endforeach
       </tbody>
     </table>
   </div>

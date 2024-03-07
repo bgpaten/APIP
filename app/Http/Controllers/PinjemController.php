@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Barangmasuk;
 use App\Models\Pinjam;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PinjemController extends Controller
 {
@@ -26,11 +28,13 @@ class PinjemController extends Controller
     {
         $user = User::all();
         $barang = Barang::all();
-        return view('pinjambarang.create', compact( 'user','barang'));
+        return view('pinjambarang.create', compact('user', 'barang'));
     }
 
     public function store(Request $request)
     {
+        $stok = Barang::where('kode', $request->kode)->value('jumlah');
+
         $rules = [
             'peminjam' => 'required',
             'jumlah' => 'required',
@@ -46,22 +50,31 @@ class PinjemController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $this->pinjam->user_id = $request->peminjam;
-        $this->pinjam->kode_barang = $request->kode;
-        $this->pinjam->nama_barang = $request->nama;
-        $this->pinjam->jumlah_pinjam = $request->jumlah;
-        $this->pinjam->created_at = $request->tgl_pinjam;
-        $this->pinjam->tgl_kembali = $request->tgl_kembali;
+        if ($request->jumlah > $stok) {
+            return redirect()->back()->with('gagal', 'Jumlah yang di pinjam melebihi stok barang');
+        } else {
+            // jika validasi berhasil maka simpan data ke database
+            $this->pinjam->user_id = $request->peminjam;
+            $this->pinjam->kode_barang = $request->kode;
+            $this->pinjam->nama_barang = $request->nama;
+            $this->pinjam->jumlah_pinjam = $request->jumlah;
+            $this->pinjam->created_at = $request->tgl_pinjam;
+            $this->pinjam->tgl_kembali = $request->tgl_kembali;
 
-        $this->pinjam->save();
+            $this->pinjam->save();
 
-        Alert::success('Successpull', 'Barang Berhasil Dipinjam');
-        return redirect()->route('pinjem.index');
+            Barang::where('kode', $request->kode)->update([
+                'jumlah' => DB::raw('jumlah - ' . $request->jumlah)
+            ]);
+
+            Alert::success('Successpull', 'Barang Berhasil Dipinjam');
+            return redirect()->route('pinjem.index');   
+        }
     }
 
     public function show(string $id)
     {
-        
+
     }
 
     public function edit($id)
@@ -69,7 +82,7 @@ class PinjemController extends Controller
         $user = User::all();
         $barang = Barang::all();
         $data = Pinjam::findOrFail($id);
-        return view('pinjambarang.edit', compact( 'user','barang', 'data'));
+        return view('pinjambarang.edit', compact('user', 'barang', 'data'));
     }
 
     public function update(Request $request, $id)
@@ -97,7 +110,7 @@ class PinjemController extends Controller
         $update->jumlah_pinjam = $request->jumlah;
         $update->created_at = $request->tgl_pinjam;
         $update->tgl_kembali = $request->tgl_kembali;
-        
+
         $update->save();
         Alert::success('Successpull', 'Data Berhasil di Update');
         return redirect()->route('pinjem.index');
