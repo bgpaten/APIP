@@ -81,19 +81,38 @@
                     <a href="#contact" class="nav-item nav-link">Contact</a>
                 </div>
                 <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-               
+                
+                        {{-- <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a> --}}
+                {{-- @auth --}}
+                    @if (!Auth::check())
+                        <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
+                    @elseif (Auth::check() && Auth::user()->role == 'user')
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}" class="btn btn-primary py-2 px-4 ms-3"
+                                onclick="event.preventDefault();
+                this.closest('form').submit();">
+                               Log Out
+                            </a>
+                        </form>
+                    @elseif (Auth::check() && Auth::user()->role == 'admin')
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}" class="btn btn-primary py-2 px-4 ms-3"
+                            onclick="event.preventDefault();
+            this.closest('form').submit();">
+                           Log Out
+                        </a>
+                    </form>
+                        <a href="{{ url('/dashboard') }}" class="btn btn-primary py-2 px-4 ms-3">Dashboard</a>
+                    @endif
+                {{-- @endauth --}}
             </div>
         </nav>
 
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-            <div class="row py-5">
-                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Contact Us</h1>
-                    <a href="{{url('/')}}" class="h5 text-white">Home</a>
-                    <i class="far fa-circle text-white px-2"></i>
-                    <a href="#" class="h5 text-white">Form Peminjaman</a>
-                </div>
-            </div>
+            @yield('breadcumb')
         </div>
     </div>
     <!-- Navbar & Carousel End -->

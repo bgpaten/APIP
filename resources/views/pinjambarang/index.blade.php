@@ -34,7 +34,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="{{ 'id' . $item->id }}">Data Peminjaman
-                                        {{ $item->user->username }}</h5>
+                                        {{ $item->username }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -42,7 +42,7 @@
                                     <div class="col-4">
                                         <p>
                                         <ul>
-                                            <li> Peminjam : {{ $item->user->username }}</li>
+                                            <li> Peminjam : {{ $item->username }}</li>
                                             <li>Tanggal Peminjaman : {{ $item->updated_at }}</li>
                                             <li>Kode Barang : {{ $item->kode_barang }}</li>
                                             <li>Barang : {{ $item->nama_barang }}</li>
@@ -72,7 +72,7 @@
                     </div>
                     <tr>
                         <td> <strong>{{ $no++ }}</strong></td>
-                        <td>{{ $item->user->username }}</td>
+                        <td>{{ $item->username }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td>{{ $item->kode_barang }}</td>
                         <td>{{ $item->nama_barang }}</td>
