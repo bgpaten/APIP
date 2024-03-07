@@ -107,7 +107,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <input type="number" class="form-control border-0 bg-light px-4" placeholder="Masukkan jumlah pinjam" name="jumlah_pinjam" style="height: 55px;">
+                                <input type="number" min="0" class="form-control border-0 bg-light px-4" placeholder="Masukkan jumlah pinjam" name="jumlah_pinjam" style="height: 55px;">
                             </div>
                             <div class="col-md-6">
                                 <input type="date" class="form-control border-0 bg-light px-4" placeholder="Pilih tanggal kembali" name="tanggal_kembali" style="height: 55px;">
@@ -116,7 +116,7 @@
                                 <textarea class="form-control border-0 bg-light px-4 py-3" rows="4" name="keterangan" placeholder="Masukan Keterangan"></textarea>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit">Pinjam Sekarang</button>
                             </div>
                         </div>
                     </form>
