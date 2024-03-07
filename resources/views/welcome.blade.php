@@ -226,9 +226,10 @@
                 </div>
                 <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal"
                             data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-                        <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+                        {{-- <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a> --}}
                 {{-- @auth --}}
                     @if (!Auth::check())
+                        <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
                         <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
                     @elseif (Auth::check() && Auth::user()->role == 'user')
                         <form method="POST" action="{{ route('logout') }}">
@@ -240,6 +241,14 @@
                             </a>
                         </form>
                     @elseif (Auth::check() && Auth::user()->role == 'admin')
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}" class="btn btn-primary py-2 px-4 ms-3"
+                            onclick="event.preventDefault();
+            this.closest('form').submit();">
+                           Log Out
+                        </a>
+                    </form>
                         <a href="{{ url('/dashboard') }}" class="btn btn-primary py-2 px-4 ms-3">Dashboard</a>
                     @endif
                 {{-- @endauth --}}
@@ -271,9 +280,9 @@
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital
                                 Solution</h1>
-                            <a href="#" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Barang</a>
-                            <a href="#contact"
-                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+                            <a href="{{ route('pinjam.create') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Barang</a>
+                            <a href="{{ route('pinjam') }}"
+                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Hostory</a>
                         </div>
                     </div>
                 </div>

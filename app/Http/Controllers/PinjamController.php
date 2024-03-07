@@ -56,8 +56,8 @@ class PinjamController extends Controller
         $rules = [
             // 'sampul' => 'required|mimes:jpg,png|max:200', // unique: nama_tabel, nama_field
             'user_id' => 'required',
-            'kode_barang' => 'required',
-            'nama_barang' => 'required',
+            'kode' => 'required',
+            'nama' => 'required',
             'jumlah_pinjam' => 'required',
             'tgl_kembali' => 'required'
         ];
@@ -76,8 +76,8 @@ class PinjamController extends Controller
 
         // $this->buku->sampul = $namaFile;
         $this->pinjam->user_id = $request->user_id;
-        $this->pinjam->kode_barang = $request->kode_barang;
-        $this->pinjam->nama_barang = $request->nama_barang;
+        $this->pinjam->kode_barang = $request->kode;
+        $this->pinjam->nama_barang = $request->nama;
         $this->pinjam->jumlah_pinjam = $request->jumlah_pinjam;
         $this->pinjam->tgl_kembali = $request->tgl_kembali;
         $this->pinjam->keterangan = $request->keterangan;
