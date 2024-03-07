@@ -198,7 +198,7 @@
                                 {{-- <i class="bx bx-search fs-4 lh-0"></i>
                                 <input type="text" class="form-control border-0 shadow-none"
                                     placeholder="Search..." aria-label="Search..." /> --}}
-                                    {{-- <span class="app-brand-text fw-bolder ms-2">APIP</span> --}}
+                                {{-- <span class="app-brand-text fw-bolder ms-2">APIP</span> --}}
                             </div>
                         </div>
                         <!-- /Search -->
@@ -235,15 +235,15 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="{{route('profile.edit')}}">
                                             <i class="bx bx-user me-2"></i>
                                             <span class="align-middle">My Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{route('profile.edit')}}">
                                             <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
+                                            <span class="align-middle">Edit Profile</span>
                                         </a>
                                     </li>
                                     <li>
