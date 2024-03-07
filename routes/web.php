@@ -38,7 +38,7 @@ Route::get('/', [KategoriController::class, 'welcome']);
 
 
 
-Route::middleware(['auth', 'role:admin, user'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard');

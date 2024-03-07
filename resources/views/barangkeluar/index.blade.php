@@ -31,9 +31,9 @@
           <td> <strong>{{$no++}}</strong></td>
           <td>ID{{$item->id}}</td>
           <td>{{$item->kode_barang}}</td>
-          <td>{{$item->Nama_barang}}</td>
+          <td>{{$item->nama_barang}}</td>
           <td>{{$item->updated_at->isoFormat('dddd, D MMMM Y')}}</td>
-          <td>{{$item->user->name}}</td>
+          <td>{{$item->username}}</td>
           <td>{{$item->jumlah_pinjam}}</td>
           <td>
             <div class="dropdown">

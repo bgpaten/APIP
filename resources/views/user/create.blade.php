@@ -24,6 +24,16 @@
 </html> --}}
 
 @extends('master.app')
+@section('breadcumb')
+<div class="row py-5">
+    <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+        <h1 class="display-4 text-white animated zoomIn">Form Peminjaman</h1>
+        <a href="{{url('/')}}" class="h5 text-white">Home</a>
+        <i class="far fa-circle text-white px-2"></i>
+        <a href="#" class="h5 text-white">Form Peminjaman</a>
+    </div>
+</div>
+@endsection
 @section('konten')
      <!-- Contact Start -->
      <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -70,9 +80,10 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
                     <form action="{{ route('pinjam.store') }}" method="post">
+                        @csrf
                         <div class="row g-3">
                             <div class="col-md-12">
-                                <input type="text" value="{{ Auth::user()->name }}" class="form-control border-0 bg-light px-4" placeholder="Nama Peminjam" name="peminjam" style="height: 55px;">
+                                <input type="text" value="{{ Auth::user()->name }}"  class="form-control border-0 bg-light px-4" placeholder="Nama Peminjam" name="peminjam" style="height: 55px;">
                             </div>
                             <div class="col-md-6">
                                 <select id="nama" class="form-select border-0 bg-light px-4 @error('nama') is-invalid @enderror" name="nama" style="height: 55px;">
@@ -82,7 +93,7 @@
                                     @endforeach
                                 </select>
                                 @error('nama')
-                                <p class="text-danger">{{ $message }}</p>
+                                    <p class="text-danger">{{ $message }}</p>
                                  @enderror
                             </div>
                             <div class="col-md-6">
@@ -93,7 +104,7 @@
                                     @endforeach
                                 </select>
                                 @error('kode')
-                                <p class="text-danger">{{ $message }}</p>
+                                    <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             <script>
                                 $(document).ready(function() {
@@ -107,13 +118,22 @@
                             </div>
 
                             <div class="col-md-6">
-                                <input type="number" class="form-control border-0 bg-light px-4" placeholder="Masukkan jumlah pinjam" name="jumlah_pinjam" style="height: 55px;">
+                                <input type="number" value="{{old('jumlah_pinjam')}}" class="form-control border-0 bg-light px-4 @error('jumlah_pinjam') is-invalid @enderror" placeholder="Masukkan jumlah pinjam" name="jumlah_pinjam" style="height: 55px;">
+                                @error('jumlah_pinjam')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-md-6">
-                                <input type="date" class="form-control border-0 bg-light px-4" placeholder="Pilih tanggal kembali" name="tanggal_kembali" style="height: 55px;">
+                                <input type="date" value="{{old('tanggal_kembali')}}" class="form-control border-0 bg-light px-4 @error('tanggal_kembali') is-invalid @enderror" placeholder="Pilih tanggal kembali" name="tanggal_kembali" style="height: 55px;">
+                                @error('tanggal_kembali')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control border-0 bg-light px-4 py-3" rows="4" name="keterangan" placeholder="Masukan Keterangan"></textarea>
+                                <textarea value="{{old('keterangan')}}" class="form-control border-0 bg-light px-4 py-3 @error('keterangan') is-invalid @enderror" rows="4" name="keterangan" placeholder="Masukan Keterangan"></textarea>
+                                @error('keterangan')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>

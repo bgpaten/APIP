@@ -54,35 +54,32 @@ class PinjamController extends Controller
     {
         //
         $rules = [
-            // 'sampul' => 'required|mimes:jpg,png|max:200', // unique: nama_tabel, nama_field
-            'user_id' => 'required',
+            
+            'peminjam' => 'required',
             'kode' => 'required',
             'nama' => 'required',
             'jumlah_pinjam' => 'required',
-            'tgl_kembali' => 'required'
+            'tanggal_kembali' => 'required'
         ];
 
         // pesan error
         $messages = [
             'required' => ':attribute tidak boleh kosong',
             'max' => ':attribute ukuran/jumlah tidak sesuai',
-            'mimes' => ':attribute file tidak didukung, silakan gunakan (.jpg/.png)'
+            
         ];
 
         $this->validate($request, $rules, $messages);
         
-        // $gambar = $request->sampul;
-        // $namaFile = time() . rand(100,999) . "." . $gambar->getClientOriginalExtension();
-
-        // $this->buku->sampul = $namaFile;
-        $this->pinjam->user_id = $request->user_id;
+      
+        $this->pinjam->username = $request->peminjam;
         $this->pinjam->kode_barang = $request->kode;
         $this->pinjam->nama_barang = $request->nama;
         $this->pinjam->jumlah_pinjam = $request->jumlah_pinjam;
-        $this->pinjam->tgl_kembali = $request->tgl_kembali;
+        $this->pinjam->tgl_kembali = $request->tanggal_kembali;
         $this->pinjam->keterangan = $request->keterangan;
 
-        // $gambar->move(public_path() . '/upload' . $namaFile);
+        
         $this->pinjam->save();
 
         Alert::success('Successpull', 'Barang Berhasil Dipinjam');
@@ -103,8 +100,9 @@ class PinjamController extends Controller
     public function edit($id)
     {
         //
+        $data = Barang::all();
         $pinjam = Pinjam::findOrFail($id);
-        return view('user.edit', compact('pinjam'));
+        return view('user.edit', compact('pinjam','data'));
     }
 
     /**
