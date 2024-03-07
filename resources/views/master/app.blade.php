@@ -20,6 +20,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
+     <!-- Ajax -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+
     <!-- Libraries Stylesheet -->
     <link href="{{asset('user')}}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="{{asset('user')}}/lib/animate/animate.min.css" rel="stylesheet">
@@ -86,9 +89,9 @@
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                     <h1 class="display-4 text-white animated zoomIn">Contact Us</h1>
-                    <a href="" class="h5 text-white">Home</a>
+                    <a href="{{url('/')}}" class="h5 text-white">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Contact</a>
+                    <a href="#" class="h5 text-white">Form Peminjaman</a>
                 </div>
             </div>
         </div>
