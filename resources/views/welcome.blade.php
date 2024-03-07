@@ -255,7 +255,7 @@
             </div>
         </nav>
 
-        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        {{-- <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="w-100" src="{{ asset('user') }}/img/carousel-1.jpg" alt="Image">
@@ -268,8 +268,6 @@
                                 class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Barang</a>
                             <a href="{{ route('pinjam') }}"
                                 class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">History</a>
-
-
                         </div>
                     </div>
                 </div>
@@ -297,9 +295,78 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+        </div> --}}
+
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="{{ asset('user') }}/img/1.jpeg" alt="Image" style="height: 680px">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">creative and innovative in
+                                inventory</h1>
+                            <a href="{{ route('pinjam.create') }}"
+                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
+                                Pinjam Barang</a>
+                            <a href="{{ route('pinjam') }}"
+                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">
+                                History
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{{ asset('user') }}/img/3.jpg" alt="Image" style="height: 680px">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital
+                                Solution</h1>
+                            <a href="{{ route('pinjam.create') }}" 
+                               class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
+                                Pinjam Barang
+                            </a>
+                            <a href="{{ route('pinjam') }}"
+                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">
+                                History
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
     <!-- Navbar & Carousel End -->
+
+    
+     <!-- Full Screen Search Start -->
+     <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->
 
 
     <!-- Facts Start -->
@@ -402,7 +469,7 @@
                 <div class="col-lg-5" style="min-height: 500px;">
                     <div class="position-relative h-100">
                         <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s"
-                            src="https://olsera.com/_nuxt/img/6.2566a1f.jpg" style="object-fit: cover;">
+                            src="https://petik.or.id/wp-content/uploads/2022/12/gedung-petik-1024x640.jpg" style="object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -552,28 +619,6 @@
     @endauth
     <!-- Barang end-->
 
-    <!----
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
-  </li>
-</ul>
-<div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
-</div>
-    -->
 
     <!-- Quote Start -->
     <div class="container-fluid py-5 wow fadeInUp" id="contact" data-wow-delay="0.1s">
@@ -645,42 +690,43 @@
     <!-- Quote End -->
 
 
-    <!-- Team Start -->
-    <div class="container-fluid py-5 wow fadeInUp" id="team" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Team Members</h5>
-                <h1 class="mb-0">Professional Stuffs Ready to Help Your Business</h1>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg wow slideInUp" data-wow-delay="0.2s">
-                    <div class="team-item bg-light rounded overflow-hidden">
-                        <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-1.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
-                                    href="https://github.com/bgpaten"><i class="fab fa-github fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
-                                    href="https://www.instagram.com/ahyarpattani_/"><i
-                                        class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
-                                    href="https://www.linkedin.com/in/ahyar-pattani-24879728a/"><i
-                                        class="fab fa-linkedin-in fw-normal"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center py-4">
-                            <h4 class="text-primary">Mang Atan</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+   
+   <!-- Team Start -->
+   <div class="container-fluid py-5 wow fadeInUp" id="team" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <h5 class="fw-bold text-primary text-uppercase">Team Members</h5>
+            <h1 class="mb-0">Professional Stuffs Ready to Help Your Business</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg wow slideInUp" data-wow-delay="0.2s">
+                <div class="team-item bg-light rounded overflow-hidden">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{{ asset('user') }}/img/atan.png" alt="" style="height: 300px">
+                        <div class="team-social">
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                href="https://github.com/bgpaten"><i class="fab fa-github fw-normal"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                href="https://www.instagram.com/ahyarpattani_/"><i
+                                    class="fab fa-instagram fw-normal"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                                href="https://www.linkedin.com/in/ahyar-pattani-24879728a/"><i
+                                    class="fab fa-linkedin-in fw-normal"></i></a>
                         </div>
                     </div>
+                    <div class="text-center py-4">
+                        <h4 class="text-primary">Mang Atan</h4>
+                        <p class="text-uppercase m-0">Full Stack</p>
+                    </div>
                 </div>
-                <div class="col-lg wow slideInUp" data-wow-delay="0.4s">
-                    <div class="team-item bg-light rounded overflow-hidden">
-                        <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-2.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded"
-                                    href="https://github.com/Saeful25"><i class="fab fa-github fw-normal"></i></a>
+            </div>
+            <div class="col-lg wow slideInUp" data-wow-delay="0.4s">
+                <div class="team-item bg-light rounded overflow-hidden">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{{ asset('user') }}/img/epul.jpg" alt="" style="height: 300px">
+                        <div class="team-social">
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded"
+                            href="https://github.com/Saeful25"><i class="fab fa-github fw-normal"></i></a>
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded"
                                     href="https://www.instagram.com/m_saeful311/"><i
                                         class="fab fa-instagram fw-normal"></i></a>
@@ -691,14 +737,14 @@
                         </div>
                         <div class="text-center py-4">
                             <h4 class="text-primary">Mang Epul</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+                            <p class="text-uppercase m-0">Frontend</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg wow slideInUp" data-wow-delay="0.6s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/kahfi.png" alt="" style="height: 300px">
                             <div class="team-social">
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded"
                                     href="https://github.com/Qhhvy"><i class="fab fa-github fw-normal"></i></a>
@@ -712,14 +758,14 @@
                         </div>
                         <div class="text-center py-4">
                             <h4 class="text-primary">Mang Kahfi</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+                            <p class="text-uppercase m-0">Programmer</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg wow slideInUp" data-wow-delay="0.8s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/haikal.png" alt="" style="height: 300px">
                             <div class="team-social">
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded"
                                     href="https://github.com/okelaja/"><i class="fab fa-github fw-normal"></i></a>
@@ -733,14 +779,14 @@
                         </div>
                         <div class="text-center py-4">
                             <h4 class="text-primary">Mang Haikal</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+                            <p class="text-uppercase m-0">Web Develover</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg wow slideInUp" data-wow-delay="1s">
                     <div class="team-item bg-light rounded overflow-hidden">
                         <div class="team-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/team-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('user') }}/img/lutaf.png" alt="" style="height: 300px">
                             <div class="team-social">
                                 <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i
                                         class="fab fa-github fw-normal"></i></a>
@@ -753,7 +799,7 @@
                         </div>
                         <div class="text-center py-4">
                             <h4 class="text-primary">Mang Lutfi</h4>
-                            <p class="text-uppercase m-0">Designation</p>
+                            <p class="text-uppercase m-0">UI UX</p>
                         </div>
                     </div>
                 </div>
@@ -761,6 +807,7 @@
         </div>
     </div>
     <!-- Team End -->
+
 
 
     <!-- Testimonial Start -->
