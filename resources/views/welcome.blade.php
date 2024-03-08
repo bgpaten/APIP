@@ -255,47 +255,7 @@
             </div>
         </nav>
 
-        {{-- <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="{{ asset('user') }}/img/carousel-1.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">creative and innovative in
-                                inventory</h1>
-                            <a href="{{ route('pinjam.create') }}"
-                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Barang</a>
-                            <a href="{{ route('pinjam') }}"
-                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">History</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('user') }}/img/carousel-2.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital
-                                Solution</h1>
-                            <a href="{{ route('pinjam.create') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Pinjam Barang</a>
-                            <a href="{{ route('pinjam') }}"
-                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Hostory</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div> --}}
+      
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -737,7 +697,7 @@
                         </div>
                         <div class="text-center py-4">
                             <h4 class="text-primary">Mang Epul</h4>
-                            <p class="text-uppercase m-0">Frontend</p>
+                            <p class="text-uppercase m-0">Full Stack Develover</p>
                         </div>
                     </div>
                 </div>
