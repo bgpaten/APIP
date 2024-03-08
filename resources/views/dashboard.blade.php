@@ -77,8 +77,8 @@
                   </div>
                 </div>
               </div>
-              <span class="fw-semibold d-block mb-1">Profit</span>
-              <h3 class="card-title mb-2">$12,628</h3>
+              <span class="fw-semibold d-block mb-1">Kategori</span>
+              <h3 class="card-title mb-2">{{$ktg->count()}}</h3>
               <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
             </div>
           </div>
@@ -111,8 +111,8 @@
                   </div>
                 </div>
               </div>
-              <span>Sales</span>
-              <h3 class="card-title text-nowrap mb-1">$4,679</h3>
+              <span>Lokasi</span>
+              <h3 class="card-title text-nowrap mb-1">{{$lokasi->count()}}</h3>
               <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
             </div>
           </div>
@@ -139,12 +139,12 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    2022
+                    2024
                   </button>
                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                    <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                    <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                    <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                    <a class="dropdown-item" href="javascript:void(0);">2024</a>
+                    <a class="dropdown-item" href="javascript:void(0);">2023</a>
+                    <a class="dropdown-item" href="javascript:void(0);">2022</a>
                   </div>
                 </div>
               </div>
@@ -158,7 +158,7 @@
                   <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
                 </div>
                 <div class="d-flex flex-column">
-                  <small>2022</small>
+                  <small>2023</small>
                   <h6 class="mb-0">$32.5k</h6>
                 </div>
               </div>
@@ -167,7 +167,7 @@
                   <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
                 </div>
                 <div class="d-flex flex-column">
-                  <small>2021</small>
+                  <small>2024</small>
                   <h6 class="mb-0">$41.2k</h6>
                 </div>
               </div>
@@ -203,8 +203,8 @@
                   </div>
                 </div>
               </div>
-              <span class="d-block mb-1">Payments</span>
-              <h3 class="card-title text-nowrap mb-2">$2,456</h3>
+              <span class="d-block mb-1">Supplier</span>
+              <h3 class="card-title text-nowrap mb-2">{{$suplier->count()}}</h3>
               <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
             </div>
           </div>
@@ -233,8 +233,8 @@
                   </div>
                 </div>
               </div>
-              <span class="fw-semibold d-block mb-1">Transactions</span>
-              <h3 class="card-title mb-2">$14,857</h3>
+              <span class="fw-semibold d-block mb-1">Kondisi</span>
+              <h3 class="card-title mb-2">{{$kondisi->count()}}</h3>
               <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
             </div>
           </div>

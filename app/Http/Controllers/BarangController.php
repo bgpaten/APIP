@@ -41,6 +41,18 @@ class BarangController extends Controller
         return view('barang.create',compact('barangmasuk','ktg','lokasi','kondisi','suplier'));
      
     }
+    public function count(Request $request)
+    {
+        //
+        $barangmasuk = Barangmasuk::all();
+        $ktg = Kategori::all();
+        $lokasi = Lokasi::all();
+        $kondisi = Kondisi::all();
+        $suplier = Supplier::all();
+        return view('dashboard',compact('barangmasuk','ktg','lokasi','kondisi','suplier'));
+     
+    }
+
     public function store(Request $request)
     {
         //
