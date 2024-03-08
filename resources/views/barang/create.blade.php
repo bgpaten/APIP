@@ -21,29 +21,14 @@
         <form action="{{ route('barang.store') }}" enctype="multipart/form-data" method="post">
             @csrf
           <div class="row mb-3">
-            <label class="col-sm-2 col-md-2 col-form-label" for="basic-icon-default-fullname">Kode <span class="text-danger">*</span></label>
-            <div class="col-sm-10 col-md-4">
-              <div class="input-group input-group-merge">
-                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="fa-solid fa-paperclip"></i></span>
-                <select id="defaultSelect" class="form-select @error('kode') is-invalid @enderror" name="kode">
-                  <option hidden>Pilih Kode Barang</option>
-                  @foreach ($barangmasuk as $brg)
-                  <option value="{{$brg->kode_barang}}">{{$brg->kode_barang}}</option>
-                  @endforeach
-                </select>
-            </div>
-            @error('kode')
-                <p class="text-danger">{{ $message }}</p>
-            @enderror
-            </div>
             <label class="col-sm-2 col-md-2 col-form-label" for="basic-icon-default-fullname">Nama Barang <span class="text-danger">*</span></label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="fa-solid fa-bag-shopping"></i></span>
-                <select id="defaultSelect" class="form-select @error('nama_barang') is-invalid @enderror" name="nama_barang">
+                <select id="nama_barang" class="form-select @error('nama_barang') is-invalid @enderror" name="nama_barang">
                   <option hidden>Pilih Nama Barang</option>
                   @foreach ($barangmasuk as $brg)
-                  <option value="{{$brg->nama_barang}}">{{$brg->nama_barang}}</option>
+                  <option value="{{$brg->nama_barang}}" data-kode="{{ $brg->kode_barang }}">{{$brg->nama_barang}}</option>
                   @endforeach
                 </select>
               </div>
@@ -51,6 +36,31 @@
                   <p class="text-danger">{{ $message }}</p>
               @enderror
             </div>
+            <label class="col-sm-2 col-md-2 col-form-label" for="basic-icon-default-fullname">Kode <span class="text-danger">*</span></label>
+            <div class="col-sm-10 col-md-4">
+              <div class="input-group input-group-merge">
+                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="fa-solid fa-paperclip"></i></span>
+                <select id="kode" class="form-select @error('kode') is-invalid @enderror" name="kode" @readonly(true)>
+                  <option hidden>Pilih Kode Barang</option>
+                  @foreach ($barangmasuk as $brg)
+                  <option value="{{$brg->kode_barang}}">{{$brg->kode_barang}}</option>
+                  @endforeach
+                </select>
+                <script>
+                  $(document).ready(function() {
+                      $("#nama_barang").change(function() {
+                          var nama = $(this).val();
+                          var kode = $(this).find(':selected').data('kode');
+                          $("#kode option[value='" + kode + "']").prop('selected', true);
+                      });
+                  });
+              </script>
+            </div>
+            @error('kode')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
+            </div>
+            
           </div>
           <div class="row mb-3">
             <label class="col-sm-2 col-md-2 col-form-label" for="basic-icon-default-fullname">Jumlah Barang <span class="text-danger">*</span></label>

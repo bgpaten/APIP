@@ -126,7 +126,7 @@
             </div>
             @if ($data->image)
             <small class="text-danger">kosongkan jika tidak mengubah gambar</small>
-            @endif'supplier.update'
+            @endif
               @error('gambar')
                   <p class="text-danger">{{ $message }}</p>
               @enderror
