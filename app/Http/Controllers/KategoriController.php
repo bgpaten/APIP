@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Barang;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
@@ -15,9 +17,10 @@ class KategoriController extends Controller
     public function welcome()
     {
         //
+        $user = User::all();
         $ktg = Kategori::all();
-        $brg = Barang::all();
-        return view('welcome',compact('ktg', 'brg'));
+        $brg = DB::table('barang')->simplePaginate(4);
+        return view('welcome',compact('user','ktg', 'brg'));
     }
     
     /**

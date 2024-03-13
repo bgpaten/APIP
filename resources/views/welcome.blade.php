@@ -342,7 +342,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Happy Clients</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">65</h1>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{$brg->count()}}</h1>
                         </div>
                     </div>
                 </div>
@@ -355,7 +355,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-primary mb-0">people register</h5>
-                            <h1 class="mb-0" data-toggle="counter-up">1007</h1>
+                            <h1 class="mb-0" data-toggle="counter-up">{{$user->count()}}</h1>
                         </div>
                     </div>
                 </div>
@@ -408,6 +408,7 @@
                             </h5>
                             <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Professional Staff</h5>
                         </div>
+                       
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
                             <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>24/7 Support</h5>
                             <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Amanah</h5> 
@@ -535,12 +536,7 @@
                 <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                     <h5 class="fw-bold text-primary text-uppercase">goods</h5>
                     <h1 class="mb-0">apip application item data</h1>
-                    <p for="">Select Kategories</p>
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        @foreach ($ktg as $item)
-                            <button type="button" class="btn btn-outline-primary">{{ $item->kategori }}</button>
-                        @endforeach
-                    </div>
+                    
                 </div>
                 <div class="row g-5">
                     @foreach ($brg as $barang)
@@ -550,24 +546,14 @@
                                     <img src="{{ asset('img') . '/' . $barang->image }}" class="card-img-top img-fluid"
                                         alt="..." style="width: auto; height: 200px;">
                                     <div class="card-body bg-light">
-                                        <h4 class="mb-3">{{ $barang->nama }}</h4>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <p>Jumlah</p>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p class="mb-3">{{ $barang->jumlah }}</p>
-                                            </div>
+                                        <div class="text-center py-4">
+                                            <h4 class=" text-primary">{{ $barang->nama }}</h4>
+                                            <p class="text-uppercase m-0">{{ $barang->jumlah }} {{ $barang->nama }} </p>
+                                            <span class="mb-3">{{ $barang->spesifikasi }}</span>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <p>Spesifikasi</p>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p class="mb-3">{{ $barang->spesifikasi }}</p>
-                                            </div>
+                                        <div class="float-end">
+                                            <a href="#" class="btn btn-primary">Detail</a>
                                         </div>
-                                        <a href="#" class="btn btn-primary">Detail</a>
                                     </div>
                                 </div>
                             </div>
@@ -575,81 +561,10 @@
                     @endforeach
                 </div>
             </div>
+            {{ $brg->withQueryString()->links('pagination::bootstrap-5') }}
         </div>
     @endauth
     <!-- Barang end-->
-
-
-    <!-- Quote Start -->
-    <div class="container-fluid py-5 wow fadeInUp" id="contact" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-7">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase">Request A Quote</h5>
-                        <h1 class="mb-0">Need A Free Quote? Please Feel Free to Contact Us</h1>
-                    </div>
-                    <div class="row gx-3">
-                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Balasan dalam waktu 24 jam
-                            </h5>
-                        </div>
-                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>Dukungan telpon 24 jam
-                            </h5>
-                        </div>
-                    </div>
-                    <p class="mb-4">Butuh penawaran gratis untuk proyek Anda berikutnya? Hubungi kami hari ini dan
-                        dapatkan penawaran khusus yang sesuai dengan anggaran Anda. Kami berkomitmen untuk menyediakan
-                        layanan terbaik kepada pelanggan kami dengan harga terbaik.</p>
-                    <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded"
-                            style="width: 60px; height: 60px;">
-                            <i class="fa fa-phone-alt text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Telpon untuk menanyakan pertanyaan apapun</h5>
-                            <h4 class="text-primary mb-0">+62 838 4165 6782</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn"
-                        data-wow-delay="0.9s">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-xl-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Name"
-                                        style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Email"
-                                        style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option hidden>Pilih Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="3" placeholder="Pesan"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-dark w-100 py-3" type="submit">Minta Penawaran</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Quote End -->
-
-
    
    <!-- Team Start -->
    <div class="container-fluid py-5 wow fadeInUp" id="team" data-wow-delay="0.1s">
@@ -769,7 +684,7 @@
     <!-- Team End -->
 
 
-
+    
     <!-- Testimonial Start -->
     <div class="container-fluid py-5 wow fadeInUp" id="testi" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -905,7 +820,7 @@
                                 <a class="btn btn-primary btn-square me-2" href="#"><i
                                         class="fab fa-twitter fw-normal"></i></a>
                                 <a class="btn btn-primary btn-square me-2" href="#"><i
-                                        class="fab fa-github-f fw-normal"></i></a>
+                                        class="fab fa-facebook-f fw-normal"></i></a>
                                 <a class="btn btn-primary btn-square me-2" href="#"><i
                                         class="fab fa-linkedin-in fw-normal"></i></a>
                                 <a class="btn btn-primary btn-square" href="#"><i
