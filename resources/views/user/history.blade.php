@@ -25,16 +25,6 @@
                             </button>
                             </a>
                         </div>
-                        <div class="col-md-5 mb-5 wow slideInUp" data-wow-delay="0.1s">
-                            <form action="{{ route('pinjam') }}" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control p-2" name="search"
-                                        placeholder="search">
-                                    <button class="btn btn-primary px-4" type="submit"><i
-                                            class="bi bi-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
                     </div>
                     <div class="row g-5">
                         <div class="col-md-12">
@@ -73,10 +63,6 @@
                                                                 Dikembalikan</span></td>
                                                     @endif
                                                     <td>
-                                                        <a href="{{ route('pinjam.edit', $item->id) }}"
-                                                            class="btn icon btn-warning ms-3">
-                                                            <i class="bi bi-pencil"></i>
-                                                        </a>
                                                         <a href="{{ route('pinjam.destroy', $item->id) }}"
                                                             class="btn icon btn-danger ms-3">
                                                             <i class="bi bi-trash"></i>

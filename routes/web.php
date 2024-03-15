@@ -38,7 +38,7 @@ Route::get('/', [KategoriController::class, 'welcome']);
 
 
 
-Route::middleware(['auth', 'role:admin,user'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
@@ -96,7 +96,7 @@ Route::middleware(['auth', 'role:admin,user'])->group(function () {
 
 });
 
-Route::middleware(['auth', 'role:user ,admin'])->group(function () {
+Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::get('/pinjam', [PinjamController::class, 'history'])->name('pinjam');
     Route::get('/pinjam/create', [PinjamController::class, 'create'])->name('pinjam.create');
