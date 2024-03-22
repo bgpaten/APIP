@@ -14,6 +14,14 @@ class KategoriController extends Controller
     {
         //
     }
+    public function dashboard()
+    {
+        //
+        $user = User::all();
+        $ktg = Kategori::all();
+        $brg = DB::table('barang')->simplePaginate(4);
+        return view('dashboard',compact('user','ktg', 'brg'));
+    }
     public function welcome()
     {
         //

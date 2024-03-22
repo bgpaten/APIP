@@ -22,7 +22,9 @@ use App\Models\Supplier;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', [KategoriController::class, 'welcome']);
+Route::get('/dashboard', [KategoriController::class, 'dashboard'])->name('dashboard');
 
 // Route::get('/user', function () {
 //     return "Anda USER Aplikasi";
@@ -38,13 +40,13 @@ Route::get('/', [KategoriController::class, 'welcome']);
 
 
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-
+Route::middleware(['auth','role:admin'])->group(function () {
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
     // })->middleware(['auth', 'verified'])->name('dashboard');
+    
+    Route::get('/home', [BarangController::class, 'count'])->name('home');
 
-    Route::get('/dashboard', [BarangController::class, 'count'])->name('dashboard');
     // Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -96,7 +98,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 });
 
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth','role:user'])->group(function () {
 
     Route::get('/pinjam', [PinjamController::class, 'history'])->name('pinjam');
     Route::get('/pinjam/create', [PinjamController::class, 'create'])->name('pinjam.create');

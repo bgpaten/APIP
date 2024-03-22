@@ -75,10 +75,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="{{url('/')}}" class="nav-item nav-link active">Home</a>
-                    <a href="{{url('/')}}" class="nav-item nav-link">About</a>
-                    <a href="{{url('/')}}" class="nav-item nav-link">Services</a>
-                    <a href="{{url('/')}}" class="nav-item nav-link">Contact</a>
+                    <a href="{{url('/dashboard')}}" class="nav-item nav-link active">Home</a>
+                    <a href="{{url('/dashboard')}}" class="nav-item nav-link">About</a>
+                    <a href="{{url('/dashboard')}}" class="nav-item nav-link">Services</a>
+                    <a href="{{url('/dashboard')}}" class="nav-item nav-link">Contact</a>
                 </div>
                 <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
                 
@@ -105,7 +105,7 @@
                            Log Out
                         </a>
                     </form>
-                        <a href="{{ url('/dashboard') }}" class="btn btn-primary py-2 px-4 ms-3">Dashboard</a>
+                        <a href="{{ url('/home') }}" class="btn btn-primary py-2 px-4 ms-3">Dashboard</a>
                     @endif
                 {{-- @endauth --}}
             </div>

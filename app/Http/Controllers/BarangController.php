@@ -49,7 +49,7 @@ class BarangController extends Controller
         $lokasi = Lokasi::all();
         $kondisi = Kondisi::all();
         $suplier = Supplier::all();
-        return view('dashboard',compact('barangmasuk','ktg','lokasi','kondisi','suplier'));
+        return view('home',compact('barangmasuk','ktg','lokasi','kondisi','suplier'));
      
     }
 

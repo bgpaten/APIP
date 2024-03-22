@@ -28,7 +28,7 @@
 <div class="row py-5">
     <div class="col-12 pt-lg-5 mt-lg-5 text-center">
         <h1 class="display-4 text-white animated zoomIn">Form Peminjaman</h1>
-        <a href="{{url('/')}}" class="h5 text-white">Home</a>
+        <a href="{{url('/dashboard')}}" class="h5 text-white">Home</a>
         <i class="far fa-circle text-white px-2"></i>
         <a href="#" class="h5 text-white">Form Peminjaman</a>
     </div>

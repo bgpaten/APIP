@@ -136,7 +136,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Startup - Startup Website Template</title>
+    <title>APIP - Inventaris Pesantren</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -222,36 +222,13 @@
                     @auth
                         <a href="#barang" class="nav-item nav-link">Barang</a>
                     @endauth
-                    <a href="#contact" class="nav-item nav-link">Contact</a>
+                    <a href="#team" class="nav-item nav-link">Contact</a>
                 </div>
                 <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal"
                             data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-                        {{-- <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a> --}}
-                {{-- @auth --}}
-                    @if (!Auth::check())
-                        <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
-                        <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
-                    @elseif (Auth::check() && Auth::user()->role == 'user')
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a href="{{ route('logout') }}" class="btn btn-primary py-2 px-4 ms-3"
-                                onclick="event.preventDefault();
-                this.closest('form').submit();">
-                               Log Out
-                            </a>
-                        </form>
-                    @elseif (Auth::check() && Auth::user()->role == 'admin')
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a href="{{ route('logout') }}" class="btn btn-primary py-2 px-4 ms-3"
-                            onclick="event.preventDefault();
-            this.closest('form').submit();">
-                           Log Out
-                        </a>
-                    </form>
-                        <a href="{{ url('/dashboard') }}" class="btn btn-primary py-2 px-4 ms-3">Dashboard</a>
-                    @endif
-                {{-- @endauth --}}
+                <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+                <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
+                
             </div>
         </nav>
 
@@ -266,7 +243,6 @@
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">creative and innovative in
                                 inventory</h1>
-                                @if (Auth::check() && Auth::user()->role == 'admin')
                                 <a href="#"
                                 class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
                                 Pinjam Barang</a>
@@ -274,15 +250,6 @@
                                 class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">
                                 History
                                 </a>
-                                @else
-                                <a href="{{ route('pinjam.create') }}"
-                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
-                                Pinjam Barang</a>
-                                <a href="{{ route('pinjam') }}"
-                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">
-                                History
-                            </a>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -293,11 +260,11 @@
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital
                                 Solution</h1>
-                            <a href="{{ route('pinjam.create') }}" 
+                            <a href="#" 
                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
                                 Pinjam Barang
                             </a>
-                            <a href="{{ route('pinjam') }}"
+                            <a href="#"
                                 class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">
                                 History
                             </a>
@@ -337,7 +304,7 @@
         </div>
     </div>
     <!-- Full Screen Search End -->
-
+    u
 
     <!-- Facts Start -->
     <div class="container-fluid facts py-5 pt-lg-0">
@@ -537,44 +504,6 @@
         </div>
     </div>
     <!-- Service End -->
-
-
-    <!-- Barang star-->
-    @auth
-        <div class="container-fluid py-5 wow fadeInUp" id="barang" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                    <h5 class="fw-bold text-primary text-uppercase">goods</h5>
-                    <h1 class="mb-0">apip application item data</h1>
-                    
-                </div>
-                <div class="row g-5">
-                    @foreach ($brg as $barang)
-                        <div class="col-lg-3 col-md-6 wow zoomIn">
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="card ">
-                                    <img src="{{ asset('img') . '/' . $barang->image }}" class="card-img-top img-fluid"
-                                        alt="..." style="width: auto; height: 200px;">
-                                    <div class="card-body bg-light">
-                                        <div class="text-center py-4">
-                                            <h4 class=" text-primary">{{ $barang->nama }}</h4>
-                                            <p class="text-uppercase m-0">{{ $barang->jumlah }} {{ $barang->nama }} </p>
-                                            <span class="mb-3">{{ $barang->spesifikasi }}</span>
-                                        </div>
-                                        <div class="float-end">
-                                            <a href="#" class="btn btn-primary">Detail</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            {{ $brg->withQueryString()->links('pagination::bootstrap-5') }}
-        </div>
-    @endauth
-    <!-- Barang end-->
    
    <!-- Team Start -->
    <div class="container-fluid py-5 wow fadeInUp" id="team" data-wow-delay="0.1s">
