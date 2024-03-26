@@ -51,10 +51,11 @@ class PinjemController extends Controller
         $this->validate($request, $rules, $messages);
 
         if ($request->jumlah > $stok) {
-            return redirect()->back()->with('gagal', 'Jumlah yang di pinjam melebihi stok barang');
+            Alert::warning('Gagal', 'Barang yang kamu pinjam melebihi stok yang tersedia!');
+            return redirect()->route('pinjem.create');
         } else {
             // jika validasi berhasil maka simpan data ke database
-            $this->pinjam->user_id = $request->peminjam;
+            $this->pinjam->username = $request->peminjam;
             $this->pinjam->kode_barang = $request->kode;
             $this->pinjam->nama_barang = $request->nama;
             $this->pinjam->jumlah_pinjam = $request->jumlah;

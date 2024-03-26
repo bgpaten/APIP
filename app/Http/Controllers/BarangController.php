@@ -11,6 +11,7 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class BarangController extends Controller
 {
 
@@ -24,7 +25,7 @@ class BarangController extends Controller
     {
         //
         $data = Barang::all();
-        return view('barang.index',compact('data'));
+        return view('barang.index', compact('data'));
     }
 
     /**
@@ -38,8 +39,8 @@ class BarangController extends Controller
         $lokasi = Lokasi::all();
         $kondisi = Kondisi::all();
         $suplier = Supplier::all();
-        return view('barang.create',compact('barangmasuk','ktg','lokasi','kondisi','suplier'));
-     
+        return view('barang.create', compact('barangmasuk', 'ktg', 'lokasi', 'kondisi', 'suplier'));
+
     }
     public function count(Request $request)
     {
@@ -55,10 +56,13 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
+
+        $stok = Barangmasuk::where('kode_barang', $request->kode)->value('jumlah_masuk');
+
         //
         $rules = [
             // max:ukuran file dalam kb
-            'gambar' => 'required|mimes:jpg,png,jpeg|max:250',
+            'gambar' => 'required|mimes:jpg,png,jpeg|max:50000',
             'kode' => 'required|unique:barang,kode',
             'nama_barang' => 'required|max:25 ',
             'jumlah_barang' => 'required',
@@ -77,29 +81,34 @@ class BarangController extends Controller
         ];
         $this->validate($request, $rules, $messages);
         // dd($request->all());
-        $gambar = $request->gambar;
-        // $namaFile = $gambar->getClientOriginalName();
-        // rename nama gambar
-        // getClientOriginalExtension = untuk mendapatkan ekstensi file
-        // getClientOriginalName = untuk mendapatkan nama file
-        $namaFile = time() . rand(100, 999) . '.'. $gambar->getClientOriginalExtension();
-        // echo $namaFile;
-        $this->barang->image = $namaFile;
-        $this->barang->kode = $request->kode;
-        $this->barang->nama = $request->nama_barang;
-        $this->barang->jumlah = $request->jumlah_barang;
-        $this->barang->kategori_id = $request->kategori;
-        $this->barang->lokasi_id = $request->lokasi;
-        $this->barang->kondisi_id = $request->kondisi;
-        $this->barang->supplier_id = $request->supplier;
-        $this->barang->spesifikasi = $request->spesifikasi;
+        if ($request->jumlah_barang > $stok) {
+            Alert::warning('Gagal', 'Barang yang kamu tambahkan melebihi stok yang tersedia!');
+            return redirect()->route('barang.create');
+        } else {
+            $gambar = $request->gambar;
+            // $namaFile = $gambar->getClientOriginalName();
+            // rename nama gambar
+            // getClientOriginalExtension = untuk mendapatkan ekstensi file
+            // getClientOriginalName = untuk mendapatkan nama file
+            $namaFile = time() . rand(100, 999) . '.' . $gambar->getClientOriginalExtension();
+            // echo $namaFile;
+            $this->barang->image = $namaFile;
+            $this->barang->kode = $request->kode;
+            $this->barang->nama = $request->nama_barang;
+            $this->barang->jumlah = $request->jumlah_barang;
+            $this->barang->kategori_id = $request->kategori;
+            $this->barang->lokasi_id = $request->lokasi;
+            $this->barang->kondisi_id = $request->kondisi;
+            $this->barang->supplier_id = $request->supplier;
+            $this->barang->spesifikasi = $request->spesifikasi;
 
-        
-        $gambar->move(public_path() . '/img', $namaFile);
-        $this->barang->save();
-        Alert::success('Successpull', 'Data Berhasil di Tambahkan');
-        return redirect()->route('barang');
-       
+
+            $gambar->move(public_path() . '/img', $namaFile);
+            $this->barang->save();
+            Alert::success('Successpull', 'Data Berhasil di Tambahkan');
+            return redirect()->route('barang');
+        }
+
     }
 
     /**
@@ -121,20 +130,20 @@ class BarangController extends Controller
         $kondisi = Kondisi::all();
         $suplier = Supplier::all();
         $data = Barang::findOrFail($barang);
-        return view('barang.edit',compact('ktg','lokasi','kondisi','suplier','data' ));
+        return view('barang.edit', compact('ktg', 'lokasi', 'kondisi', 'suplier', 'data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$barang)
+    public function update(Request $request, $barang)
     {
         //
         $update = Barang::find($barang);
 
         $rules = [
             // max:ukuran file dalam kb
-            'gambar' => 'mimes:jpg,png,jpeg|max:250',
+            'gambar' => 'mimes:jpg,png,jpeg|max:50000',
             'kode' => 'required',
             'nama_barang' => 'required|max:25 ',
             'jumlah_barang' => 'required',
@@ -164,24 +173,24 @@ class BarangController extends Controller
             $update->save();
             Alert::success('Successpull', 'Data Berhasil di Update');
             return redirect()->route('barang');
-        } 
-        
+        }
+
         // gimana kalau nama gambarnya sama sedangkan wujud gambarnya berbeda ?
         // replace gembar
         $gambar = $request->gambar;
-        $namaFile = time() . rand(100, 999) . '.'. $gambar->getClientOriginalExtension();
+        $namaFile = time() . rand(100, 999) . '.' . $gambar->getClientOriginalExtension();
         $gambar->move(public_path() . '/img', $namaFile);
 
-            $update->image = $namaFile;
-            $update->kode = $request->kode;
-            $update->nama = $request->nama_barang;
-            $update->jumlah = $request->jumlah_barang;
-            $update->kategori_id = $request->kategori;
-            $update->lokasi_id = $request->lokasi;
-            $update->kondisi_id = $request->kondisi;
-            $update->supplier_id = $request->supplier;
-            $update->spesifikasi = $request->spesifikasi;
-        
+        $update->image = $namaFile;
+        $update->kode = $request->kode;
+        $update->nama = $request->nama_barang;
+        $update->jumlah = $request->jumlah_barang;
+        $update->kategori_id = $request->kategori;
+        $update->lokasi_id = $request->lokasi;
+        $update->kondisi_id = $request->kondisi;
+        $update->supplier_id = $request->supplier;
+        $update->spesifikasi = $request->spesifikasi;
+
         $update->save();
         Alert::success('Successpull', 'Data Berhasil di Update');
         return redirect()->route('barang');

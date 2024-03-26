@@ -28,7 +28,7 @@
                 <select id="defaultSelect" class="form-select @error('kode') is-invalid @enderror" name="peminjam">
                   <option hidden>Pilih Peminjam Barang</option>
                   @foreach ($user as $use)
-                  <option value="{{$use->id}}">{{$use->name}}</option>
+                  <option value="{{$use->username}}">{{$use->name}}</option>
                   @endforeach
                 </select>
             </div>

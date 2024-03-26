@@ -52,40 +52,44 @@ class PinjamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $stok = Barang::where('kode', $request->kode)->value('jumlah');
+
         $rules = [
-            
             'peminjam' => 'required',
-            'kode' => 'required',
-            'nama' => 'required',
             'jumlah_pinjam' => 'required',
-            'tanggal_kembali' => 'required'
+            'nama' => 'required',
+            'kode' => 'required',
+            'tgl_pinjam' => 'required',
+            'tgl_kembali' => 'required'
         ];
 
-        // pesan error
         $messages = [
             'required' => ':attribute tidak boleh kosong',
-            'max' => ':attribute ukuran/jumlah tidak sesuai',
-            
         ];
 
         $this->validate($request, $rules, $messages);
-        
-      
-        $this->pinjam->username = $request->peminjam;
-        $this->pinjam->kode_barang = $request->kode;
-        $this->pinjam->nama_barang = $request->nama;
-        $this->pinjam->jumlah_pinjam = $request->jumlah_pinjam;
-        $this->pinjam->tgl_kembali = $request->tanggal_kembali;
-        $this->pinjam->keterangan = $request->keterangan;
 
-        
-        $this->pinjam->save();
+        if ($request->jumlah > $stok) {
+            return redirect()->back()->with('gagal', 'Jumlah yang di pinjam melebihi stok barang');
+        } else {
+            // jika validasi berhasil maka simpan data ke database
+            $this->pinjam->user_id = $request->peminjam;
+            $this->pinjam->kode_barang = $request->kode;
+            $this->pinjam->nama_barang = $request->nama;
+            $this->pinjam->jumlah_pinjam = $request->jumlah_pinjam;
+            $this->pinjam->created_at = $request->tgl_pinjam;
+            $this->pinjam->tgl_kembali = $request->tgl_kembali;
 
-        Alert::success('Successpull', 'Barang Berhasil Dipinjam');
-        return redirect()->route('pinjam');
+            $this->pinjam->save();
+
+            Barang::where('kode', $request->kode)->update([
+                'jumlah' => DB::raw('jumlah - ' . $request->jumlah)
+            ]);
+
+            Alert::success('Successpull', 'Barang Berhasil Dipinjam');
+            return redirect()->route('pinjem.index');   
+        }
     }
-
     /**
      * Display the specified resource.
      */
