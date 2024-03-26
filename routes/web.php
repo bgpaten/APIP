@@ -10,7 +10,9 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BarangkeluarController;
 use App\Http\Controllers\PinjamController;
 use App\Http\Controllers\PinjemController;
+use App\Models\Barangmasuk;
 use App\Models\Supplier;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +44,10 @@ Route::get('/', [KategoriController::class, 'welcome'])->middleware(['auth', 've
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('dashboard', [
+            'brg' => Barangmasuk::all(),
+            'user' => User::all(),
+        ]);
     })->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');

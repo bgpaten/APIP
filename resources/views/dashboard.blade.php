@@ -571,7 +571,6 @@
                     @endforeach
                 </div>
             </div>
-            {{ $brg->withQueryString()->links('pagination::bootstrap-5') }}
         </div>
     @endauth
     <!-- Barang end-->
