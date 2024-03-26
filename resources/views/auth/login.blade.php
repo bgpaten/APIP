@@ -63,7 +63,7 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
+                <a href="#" class="app-brand-link gap-2">
                   <img src="{{asset('admin')}}/assets/img/avatars/petik.png"  alt="" style="width: 8rem">
                 </a>
               </div>

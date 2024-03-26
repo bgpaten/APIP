@@ -24,6 +24,7 @@ use App\Models\Supplier;
 */
 Route::get('/', [KategoriController::class, 'welcome'])->middleware(['auth', 'verified']);
 
+
 // Route::get('/user', function () {
 //     return "Anda USER Aplikasi";
 // })->middleware('auth')->name('user');
@@ -46,7 +47,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     })->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
@@ -93,10 +93,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/pinjambarang/show/{id}', [PinjemController::class, 'show'])->name('pinjem.show');
     Route::get('/pinjambarang/edit/{id}', [PinjemController::class, 'edit'])->name('pinjem.edit');
     Route::put('/pinjambarang/update/{id}', [PinjemController::class, 'update'])->name('pinjem.update');
-
 });
 
-Route::middleware(['auth', 'role:user'])->group(function () {
+
+Route::middleware(['auth','role:user'])->group(function () {
 
     Route::get('/pinjam', [PinjamController::class, 'history'])->name('pinjam');
     Route::get('/pinjam/create', [PinjamController::class, 'create'])->name('pinjam.create');

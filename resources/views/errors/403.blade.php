@@ -60,7 +60,11 @@
       <div class="misc-wrapper">
         <h2 class="mb-2 mx-2">Under Maintenance!</h2>
         <p class="mb-4 mx-2">Sorry for the inconvenience but we're performing some maintenance at the moment</p>
-        <a href="index.html" class="btn btn-primary">Back to home</a>
+@if (Auth::check() && Auth::user()->role == 'user')
+        <a href="#" class="btn btn-primary">Back to home</a>
+@else
+        <a href="{{route('dashboard')}}" class="btn btn-primary">Back to home</a>
+@endif
         <div class="mt-4">
           <img
             src="{{asset('admin')}}/assets/img/illustrations/girl-doing-yoga-light.png"

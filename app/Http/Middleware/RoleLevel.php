@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoleLevel
 {
+    // titik tiga dibawah ini maksudnya array
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         // kasih logika kalau user itu ada role yang sesuai

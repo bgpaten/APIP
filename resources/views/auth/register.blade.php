@@ -14,7 +14,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Register Basic - Pages </title>
 
     <meta name="description" content="" />
 
@@ -161,12 +161,10 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
-
-
-{{-- <x-guest-layout>
+{{-- 
+<x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
