@@ -24,8 +24,13 @@
             <label class="col-sm-2 col-md-2 col-form-label" for="basic-icon-default-fullname">Nama Peminjam <span class="text-danger">*</span></label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group input-group-merge">
-                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                <input type="text" name="nama" value="{{ Auth::user()->name }}" class="form-control @error('tgl_pinjam') is-invalid @enderror" id="basic-icon-default-fullname" placeholder="Jumlah barang" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2">
+                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="fa-solid fa-paperclip"></i></span>
+                <select id="defaultSelect" class="form-select @error('kode') is-invalid @enderror" name="peminjam">
+                  <option hidden>Pilih Peminjam Barang</option>
+                  @foreach ($user as $use)
+                  <option value="{{$use->username}}">{{$use->name}}</option>
+                  @endforeach
+                </select>
             </div>
             @error('nama')
                 <p class="text-danger">{{ $message }}</p>
